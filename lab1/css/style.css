@@ -1,0 +1,54 @@
+body {
+  font-family: Times, "Times New Roman", serif;
+  background-color: #F5F5F5;
+}
+
+p {
+  font-family: Cambria, Cochin;
+  font-size: 16px;
+  text-indent: 40px;
+}
+
+h1 {
+  color: #212121;
+  font-size: 30px;
+}
+
+h2 {
+  color: #424242;
+  font-size: 24px;
+}
+
+h3 {
+  color: #616161;
+  font-size: 20px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table,
+td,
+th {
+  border: 1px solid #616161;
+}
+
+a {
+  color: #4FC3F7;
+  text-decoration: none
+}
+
+a:hover {
+  color: #29B6F6;
+}
+
+ul {
+  list-style-type: square;
+}
+
+img {
+  border: 3px solid #616161;
+  padding: 3px;
+  background: #fff;
+}
