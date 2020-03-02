@@ -1,0 +1,12 @@
+This is a very interesting project, and I need to design this website well in the beginning. I intend to start from the following aspects.
+
+Page layout
+On the page layout, I plan to use the "Top-Middle-Bottom" layout, where "Top" is the menu bar and includes the homepage, apple, banana, orange, lemon and more fruits. "Middle" Is the main text, which is a detailed introduction. The middle part will also be divided into left and right parts. On the left are the headings of various levels, such as Background, Production Level, Source, etc., so that users can click directly to enter the corresponding content. On the right is the text below each heading. "Bottom" is at the bottom, there are some links and copyright information.
+
+Interaction design
+The homepage is the overall introduction of this website. We can click on the specific fruit to enter the fruit details page. In order to make the interaction of the details page more friendly, I want to make the picture clickable. In this way, we can view the big picture after clicking the picture, and we can easily view the details.
+
+Color matching
+All the colors in the CSS file are from a famous CSS color sampling site (https://www.mdui.org/design/style/color.html#color-color-tool), it can help me to create, share color schemes, and apply color schemes to the UI. I plan to use warm colors to give people a sweet and warm feeling. Different fruits use different background colors, such as bananas with warmer yellow, apples with red, and so on.
+
+The above is my overall design for this website. I will try my best to write the code and complete this work.
