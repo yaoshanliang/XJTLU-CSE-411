@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+    <title>Stylesheet Demos</title>
+    <!-- We need to add metadata here -->
+
+	    <style>
+	     .bluepara{
+	     	color : #0000FF;
+	     }
+
+	     .redpara{
+	     	color : #FF0000;
+	    }
+	    #greenpara {
+	    	background-color : #00FF00;
+	    }
+    </style>
+
+  </head>
+
+  <body>
+
+  <!----------- Alerts ---------------------------------------->
+  <h1> Alerts </h1>
+
+  <p> A simple alert </p>
+
+  <script>
+  	alert("Red alert!");
+  </script>
+
+  <p> using a string and numeric variable </p>
+
+  <script>
+	  	var output = "test";
+	 	alert(output);
+
+	 	var outputnum = 5;
+	 	alert(outputnum);
+
+	 	alert(output + " " +outputnum);
+  </script>
+
+
+  <!----------- Forms ---------------------------------------->
+  <h1> Forms </h1>
+
+  <p>  A simple form of 3 buttons </p>
+
+   <form action="" method="">
+          <input type="button" name="button1" value="One" onclick="">
+          <input type="button" name="button2" value="Two" onclick="">
+          <input type="button" name="button3" value="Three" onclick="">
+  </form>
+
+  <p> A form of one button, a label, and one textfield </p>
+
+  <form>
+         <label>
+    	    Name
+          	<input type="text" name="name">
+          </label>
+
+          <fieldset>
+          <input type="button" name="equal" value="=" onclick="">
+          </fieldset>
+  </form>
+
+  <p> A form of a label, 2 text fields, and 1 button.  Note that the onclick method passes the values of the first field into a method as a parameter.  The format is name.value, where name corresponds to the name of the textfield, and the value corresponds to the text entered. </p>
+
+    <form>
+           <label>
+      	    Name
+            	<input type="text" name="firstfield">
+            	<input type="text" name="secfield">
+            </label>
+
+            <fieldset>
+            <input type="button" name="equal" value="=" onclick="function(firstfield.value)">
+            </fieldset>
+  </form>
+
+  <p> A more complex form, with 3 radio buttons, grouped together with a "fieldset" so that only one can be selected.  Note that all radio buttons have the same "name", as they are linked, and a different value
+
+    <form action="" method="">
+
+          <fieldset>
+    	  	<input type="radio" name="calc" value="1" checked> First Choice
+    	  	<input type="radio" name="calc" value="2"> Second Choice
+    	  	<input type="radio" name="calc" value="3"> Third Choice
+          </fieldset>
+
+          <fieldset>
+          <input type="button" name="equal" value="=" onclick="calculate(calc.value)">
+          </fieldset>
+
+  </form>
+
+  <!----------- Variables ---------------------------------------->
+<h1> Variables </h1>
+
+<p> Create a number and a string variable.  Note that no type is needed. </p>
+
+<script>
+var numVar = 2;
+var name = "Test";
+</script>
+
+<p> create an array of strings </p>
+
+<script>
+var files = ["file1", "file2", "file3", "file4"];
+var nums = [1,2,3,4,5,6,7];
+var arrlength = files.length;
+</script>
+
+<p> Get the length of an array </p>
+
+<script>
+var totlen = files.length;
+</script>
+
+  <!----------- Functions ---------------------------------------->
+
+  <h1> Functions </h1>
+
+  <p> A basic function that shows an alert </p>
+
+  <script>
+  function showAlert(){
+  	alert("in the function");
+  }
+
+  </script>
+
+  <p> How to call the above function from a button </p>
+
+  <input type="button" name="button2" value="Click Me" onclick="showAlert()">
+
+  <p>  But it doesn't need to be called from within a button </p>
+
+  <script>
+  showAlert();
+  </script>
+
+
+  <p> A function that takes the variable declared above, adds one to its value <p>
+
+  <script>
+  function addup() {
+  	  numVar = numVar + 1;
+  }
+  </script>
+
+  <p> A function that receives 2 parameters, and how to call it from within a button.  Note use of single quote <p>
+
+  <input type="button" name="button2" value="Pass a parameter" onclick="params1('A name', 4)">
+
+    <script>
+    function params1(name,num) {
+    	  alert(name + " " + num);
+    }
+  </script>
+
+
+  <!----------- Comparisons ---------------------------------------->
+
+ <h1> Comparisons and conditions </h1>
+
+  <p> Its easy to compare numbers, see greater than, equal to.  Also, observe the use of ifs and elses, and == sign for equals</p>
+
+  <script>
+  function greaterThan(){
+  	var first = 3;
+  	var sec = 5;
+  	if(first > sec) {
+  		alert("greatest is " +first);
+  	}
+  	else {
+  		alert("greatest is " + second);
+  	}
+  }
+
+  function equalsTo(){
+    	var first = 5;
+    	var sec = 5;
+    	if(first == sec) {
+    		alert("Same");
+    	}
+    	else {
+    		alert("different");
+    	}
+  }
+
+  </script>
+
+<p>  The above scripts are if/else examples.  You can also carry out multiple comparisons with else ifs. </p>
+
+  <script>
+
+function greaterThan(){
+  	var first = 3;
+
+  	if(first == 1) {
+  		alert("choice is 1 and red");
+  	}
+  	else if(first == 2) {
+  		alert("choice is 2 and black" );
+  	}
+  	else if(first == 3) {
+	  		alert("choice is 3 and green" );
+  	}
+  	else if(first == 4) {
+	  		alert("choice is 4 and blue" );
+  	}
+  	else {
+  		alert("I don't know");
+  	}
+  }
+  </script>
+
+<!----------- Loops ---------------------------------------->
+
+ <h1> Fors and whiles </h1>
+
+ <p>  A for look will loop for a set number of times, starting at an initially declared value, checking a condition, and then changing the value.  Here, the variable i starts at zero, and is set to loop five times.  Each time it loops, it checks, carries out everything within the loop, and then increments the value by 1.  This will show five alerts, starting from zero to five </p>
+
+<script>
+function loop() {
+	for (var i = 0; i < 5; i++) {
+    	alert("We are going round number " + i);
+	}
+}
+</script>
+
+
+<!----------- Selecting from the DOM ---------------------------------------->
+
+<h1>  Exploring the DOM </h1>
+
+<p> A very simple example of setting a single attribute in a single tag (the body) using query selector </p>
+
+  <script>
+	function changepara1(){
+	  		var ele = document.querySelector("body");
+	  		alert(ele);
+			ele.style.backgroundColor = "#332211";
+    }
+  </script>
+
+<p> A very simple example of setting a single attribute in all tags, using a for loop and query selector all </p>
+
+<script>
+	function changepara2(){
+		var ele = document.querySelectorAll("img");
+
+		for (var i = 0; i < ele.length; i++) {
+		    ele[i].style.backgroundColor = "#555555";
+		}
+  	}
+ </script>
+
+<p> A way of selecting a query by id and adding a class to it </p>
+
+<script>
+
+function changepara4(){
+		var ele = document.querySelector("#specialpara");
+		alert(ele);
+		ele.classList.add("redpara");
+}
+
+</script>
+
+<p>  A way of selecting all paragraphs and changing their text </p>
+<script>
+	function changepara1(){
+		var ele = document.querySelectorAll("p");
+		alert(ele);
+		for (var i = 0; i < ele.length; i++) {
+			   ele[i].textContent = "A change";
+		}
+	}
+ </script>
+
+
+<!----------- Extras ---------------------------------------->
+
+<h1> Extra functions that may be useful </h1>
+
+<p>  Number checker.  Checks if a number has been entered,returns true or false </p>
+
+ <script>
+function checkEmpty(num) {
+	if (isNaN(num)){
+		return true;
+	}
+	if(num==""){
+		return true;
+	}
+	return false;
+}
+ </script>
+
+<p>  Nan function use.  Shows a function that uses the number checker </p>
+
+ <script>
+function calculate(num1) {
+	if(checkEmpty(num1){
+		alert("Invalid value entered");
+	}
+	else{
+		alert("valid");
+	}
+}
+ </script>
+
+
+<p>  Number counter.  How to add, subtract, multiply, divide.  Note the use of Number(X) for addition
+	return false;
+}
+
+ <script>
+function performCalc(num1,num2){
+	Number(num1)+ Number(num2);
+	num1-num2;
+	num1/num2;
+	num1*num2;
+}
+ </script>
+
+<!----------- Keyboard and Mouse Listeners ---------------------------------------->
+<h1> Listeners </h1>
+
+<h2> Keyboard listener </h2>
+
+<p>  To add a keyboard listener, add the event listener to your script.  Of the 3 parameters, the first one is the property to listen out for "keydown", i.e. when the key is pressed down, the second one is the function that is called when a key is detected, and the third one, just keep as "false". </p>
+
+<script>
+window.addEventListener("keydown", checkKey, false);
+</script>
+
+<p>  To check the key, create a function matching the name, and check for key value </p>
+
+<script>
+function checkKey(e) {
+    if (e.keyCode == "65") {
+        alert("The 'a' key is pressed.");
+    }
+}
+</script>
+
+<h2> Mouse listener </h2>
+
+<p> To add a mouse listener, you first need to use the query to search for the element to assign a listener to, and add a listener.  Then create a function to match, and this function will be called when your chosen element is clicked on. </p>
+
+
+<script>
+var ele = document.querySelector("#thingToSelect");
+ele.addEventListener("click", doSomething, false);
+
+
+function doSomething() {
+    alert("Something";
+}
+</script>
+
+</body>
+</html>

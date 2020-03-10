@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset="utf-8">
+	<meta content="What this page is about." name="description">
+    <title>Hello World</title>
+
+    <style>
+		     .bluepara{
+		     	color : #0000FF;
+		     }
+
+		     .redpara{
+		     	color : #FF0000;
+		    }
+		    #greenpara {
+		    	background-color : #00FF00;
+		    }
+    </style>
+
+  </head>
+  <body>
+
+
+	 <!----------- Alerts ---------------------------------------->
+	  <h1> Alerts </h1>
+
+	  <p> A simple alert </p>
+
+	  <script>
+	  	 <!--alert("Red alert!"); -->
+	  </script>
+
+	  <p> using a string and numeric variable </p>
+
+	  <h1> Forms </h1>
+
+	    <p>  A simple form of 3 buttons </p>
+
+	     <form action="" method="">
+	            <input type="button" name="button1" value="One" onclick="firstAlert()">
+	            <input type="button" name="button2" value="Two" onclick="countdown()">
+	            <input type="button" name="button3" value="Reset" onclick="resetting()">
+  		 </form>
+
+  		 <p> A form of one button, a label, and one textfield </p>
+
+		    <form>
+		              <label>
+		         	    Name
+		               	<input type="text" name="firstfield">
+		               	<input type="text" name="secfield">
+		               </label>
+
+		               <fieldset>
+		               <input type="button" name="equal" value="=" onclick="adder(firstfield.value,secfield.value)">
+		               </fieldset>
+  </form>
+
+  <p> A more complex form, with 3 radio buttons, grouped together with a "fieldset" so that only one can be selected.  Note that all radio buttons have the same "name", as they are linked, and a different value
+
+      <form action="" method="">
+
+            <fieldset>
+      	  	<input type="radio" name="calc" value="1" checked> First Choice
+      	  	<input type="radio" name="calc" value="2"> Second Choice
+      	  	<input type="radio" name="calc" value="3"> Third Choice
+            </fieldset>
+
+            <fieldset>
+            <input type="button" name="equal" value="Function" onclick="checkAction(calc.value)">
+            </fieldset>
+
+  </form>
+
+  <p> first paragraph </p>
+
+  <p id="specialpara"> second paragraph </p>
+
+  <p> third paragraph </p>
+
+  <form action="" method="">
+  	            <input type="button" name="ver1" value="One" onclick="changepara1()">
+  	            <input type="button" name="ver2" value="Two" onclick="changepara2()">
+  	            <input type="button" name="ver3" value="Reset" onclick="changepara3()">
+  	            <input type="button" name="ver4" value="Reset" onclick="changepara4()">
+    		 </form>
+
+
+	  <script>
+
+
+
+			var names = ["student 1", "andrew", "guard", "test", "file4", "guard", "test", "file4"];
+			var arrlength = names.length;
+	  		var counter = 5;
+
+	  		function firstAlert(){
+	  			alert("Click");
+
+	  		}
+	  		function countdown(){
+	  			counter = counter -1;
+			  	alert(counter);
+  			}
+
+  			function resetting(){
+				counter = 6;
+				alert(counter);
+  			}
+
+  			function adder(first,sec){
+  			var result = first+ " " + sec;
+  			alert(result);
+  			}
+
+			function checkAction(value){
+				alert(value);
+				first = value;
+				if(first == 1) {
+					adder("andrew","abel");
+			  	}
+			  	else if(first == 2) {
+					countdown();
+			  	}
+			  	else {
+					for (var i = 0; i < arrlength; i++) {
+						alert("Name is " + names[i]);
+					}
+				}
+  			}
+
+  			function changepara1(){
+  				var element = document.querySelector("p");
+  				element.style.backgroundColor = "yellow";
+
+  			}
+
+  			function changepara2(){
+
+  			var ele = document.querySelectorAll("p");
+				alert(ele);
+				for (var i = 0; i < ele.length; i++) {
+				element = ele[i];
+					element.style.backgroundColor = "green";
+					element.style.color = "red";
+					element.style.fontfamily = "Impact";
+					<!-- ele[i].textContent = "A change"; -->
+				}
+				}
+
+function changepara4(){
+		var ele = document.querySelector("#specialpara");
+		alert(ele);
+		ele.classList.add("redpara");
+		ele.classList.value("alterted");
+}
+
+function changepara3(){
+
+		var ele = document.querySelectorAll("p");
+		for (var i = 0; i < ele.length; i++) {
+			element = ele[i];
+			element.classList.add("bluepara");
+		}
+		}
+
+
+
+
+		  	<!-- var output = "Hello Andrew";  -->
+		 	<!-- alert(output); -->
+
+		 	<!-- var outputnum = 5; -->
+		 	<!-- alert(outputnum); -->
+
+		 	<!-- alert(output + " " +outputnum); -->
+	  </script>
+
+
+  </body>
+</html>
