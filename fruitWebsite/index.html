@@ -43,7 +43,7 @@
             <div class="product-image">
                 <img src="./images/apple2.jpg" id="product-show">
             </div>
-            <div class="product_gallery">
+            <div class="product-gallery">
                 <img src="./images/apple2.jpg" onclick="return changeImg('./images/apple2.jpg')">
                 <img src="./images/apple3.jpg" onclick="return changeImg('./images/apple3.jpg')">
                 <img src="./images/apple4.jpg" onclick="return changeImg('./images/apple4.jpg')">
@@ -55,6 +55,9 @@
 
             <div class="audio">
 
+                <div class="progress">
+                    <div id="bar"></div>
+                </div>
                 <div class="audio-item">
                     <audio controls id="audio-item">
                         Your browser does not support the <code>audio</code> element.
@@ -89,7 +92,7 @@
                 <source src="./video/apple.mp4">
             </video>
 
-            <h3 class="prod_title">APPLE</h3>
+            <h3 class="prod-title">APPLE</h3>
 
             <h3>Background</h3>
             <p>The apple tree (Malus pumila, commonly and erroneously called Malus domestica) is a deciduous tree in the
@@ -126,12 +129,24 @@
 
 <script>
 
+    // Define song list and current song id
+    let songs = [
+        '1.mp3', '2.mp3'
+    ]
+    let currentSong = 0;
+
+    // Define the length of current song
+    let duration = 0;
+
+    // Show the menu of this website
     menu();
 
+    // Change image when clicking on each thumb image
     function changeImg(src) {
         document.getElementById("product-show").setAttribute("src", src);
     }
 
+    // Play, pause, volume up and volume down
     let audiop = document.getElementById("audio-item");
     function play() {
         audiop.play();
@@ -151,18 +166,28 @@
             audiop.volume = audiop.volume - 0.1;
         }
     }
-    let songs = [
-        '1.mp3', '2.mp3'
-    ]
-    let currentSong = 0;
-    function next () {
+
+    // Next song function
+    function next() {
         currentSong++;
         if (currentSong > 1) {
             currentSong = 0;
         }
-        audiop.setAttribute('src','./audio/' + songs[currentSong])
+        audiop.setAttribute('src', './audio/' + songs[currentSong])
         audiop.play();
     }
+
+    // Calculate the process of this song
+    audiop.load();
+    audiop.oncanplay = function () {
+        duration = audiop.duration
+    }
+
+    audiop.addEventListener('timeupdate', updatePlayBar, false);
+    function updatePlayBar() {
+        document.getElementById("bar").style.width = parseFloat(((audiop.currentTime / audiop.duration) * 100), 10) + "%";
+    }
+
 </script>
 
 </html>
