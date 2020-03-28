@@ -58,7 +58,7 @@
                 <div class="audio-item">
                     <audio controls id="audio-item">
                         Your browser does not support the <code>audio</code> element.
-                        <source src="./audio/Goldfrapp - Fly Me Away.mp3" type="audio/wav">
+                        <source src="./audio/1.mp3" type="audio/wav">
                     </audio>
                 </div>
 
@@ -78,7 +78,10 @@
                     <input type="button" name="button4" value="Volume -" style="height:60px;width:90px;font-size: 40px;"
                         onclick="volumeDown()">
                 </div>
-
+                <div class="button">
+                    <input type="button" name="button4" value="Next" style="height:60px;width:90px;font-size: 40px;"
+                        onclick="next()">
+                </div>
             </div>
 
 
@@ -147,6 +150,18 @@
         if (audiop.volume > 0) {
             audiop.volume = audiop.volume - 0.1;
         }
+    }
+    let songs = [
+        '1.mp3', '2.mp3'
+    ]
+    let currentSong = 0;
+    function next () {
+        currentSong++;
+        if (currentSong > 1) {
+            currentSong = 0;
+        }
+        audiop.setAttribute('src','./audio/' + songs[currentSong])
+        audiop.play();
     }
 </script>
 
