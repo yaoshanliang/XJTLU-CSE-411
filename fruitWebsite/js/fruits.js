@@ -69,3 +69,14 @@ function menu() {
   document.getElementById("menu").insertAdjacentHTML("afterend", menu);
   document.getElementById("list").innerHTML = html;
 }
+
+let backgroundColor = "#FFF";
+function changeBackgroundColor() {
+  var ele = document.querySelector("body");
+  console.log(ele.style.backgroundColor)
+  if (ele.style.backgroundColor == '' || ele.style.backgroundColor == "rgb(255, 255, 255)") {
+    ele.style.backgroundColor = "#E8F5E9";
+  } else {
+    ele.style.backgroundColor = "#FFF";
+  }
+}
