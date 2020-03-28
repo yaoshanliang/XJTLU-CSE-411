@@ -23,7 +23,7 @@
 
             </ul>
             <ul class="nav navbar-right">
-                <li class="" >
+                <li class="">
                     <a style="font-size: 16px;" href="javascript:;" onclick="return changeBackgroundColor();">
                         Change Background
                     </a>
@@ -52,6 +52,39 @@
         </div>
 
         <div class="right" style="border:0px solid #e5e5e5;">
+
+            <div class="audio">
+
+                <div class="audio-item">
+                    <audio controls id="audio-item">
+                        Your browser does not support the <code>audio</code> element.
+                        <source src="./audio/Goldfrapp - Fly Me Away.mp3" type="audio/wav">
+                    </audio>
+                </div>
+
+                <div class="button">
+                    <input type="button" name="button1" value="Play" style="height:60px;width:60px;font-size: 40px;"
+                        onclick="play()">
+                </div>
+                <div class="button">
+                    <input type="button" name="button2" value="Pause" style="height:60px;width:60px;font-size: 40px;"
+                        onclick="pauseplay()">
+                </div>
+                <div class="button">
+                    <input type="button" name="button3" value="Volume +" style="height:60px;width:90px;font-size: 40px;"
+                        onclick="volumeUp()">
+                </div>
+                <div class="button">
+                    <input type="button" name="button4" value="Volume -" style="height:60px;width:90px;font-size: 40px;"
+                        onclick="volumeDown()">
+                </div>
+
+            </div>
+
+
+            <video controls width="100%" height="480" poster="./images/apple-video.png" autoplay muted id="video">
+                <source src="./video/apple.mp4">
+            </video>
 
             <h3 class="prod_title">APPLE</h3>
 
@@ -91,9 +124,29 @@
 <script>
 
     menu();
-    
+
     function changeImg(src) {
         document.getElementById("product-show").setAttribute("src", src);
+    }
+
+    let audiop = document.getElementById("audio-item");
+    function play() {
+        audiop.play();
+    }
+    function pauseplay() {
+        audiop.pause();
+    }
+    function volumeUp() {
+        console.log(audiop.volume)
+        if (audiop.volume < 1) {
+            audiop.volume = audiop.volume + 0.1;
+        }
+    }
+    function volumeDown() {
+        console.log(audiop.volume)
+        if (audiop.volume > 0) {
+            audiop.volume = audiop.volume - 0.1;
+        }
     }
 </script>
 
