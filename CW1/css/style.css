@@ -683,7 +683,6 @@ ul li {
   overflow: hidden;
   border-radius: 2px;
   position: relative;
-  cursor: pointer;
 }
 
 .progress .back {

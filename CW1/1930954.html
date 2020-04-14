@@ -41,16 +41,16 @@
                     <p>Enjoy the live event</p>
                     <div><strong>18:00, 1 May 2020, XJTLU.</strong></div>
                     <div class="countdown">
-                        <div class="countdown-container days"><span class="countdown-value days-bottom" id="days-number">--</span><span
-                                class="countdown-heading days-top">Days</span></div>
-                        <div class="countdown-container hours"><span class="countdown-value hours-bottom" id="hours-number">--</span><span
-                                class="countdown-heading hours-top">Hours</span></div>
-                        <div class="countdown-container minutes"><span
-                                class="countdown-value minutes-bottom" id="minutes-number">--</span><span
-                                class="countdown-heading minutes-top">Minutes</span></div>
-                        <div class="countdown-container seconds"><span
-                                class="countdown-value seconds-bottom" id="seconds-number">--</span><span
-                                class="countdown-heading seconds-top">Seconds</span></div>
+                        <div class="countdown-container days"><span class="countdown-value days-bottom"
+                                id="days-number">--</span><span class="countdown-heading days-top">Days</span></div>
+                        <div class="countdown-container hours"><span class="countdown-value hours-bottom"
+                                id="hours-number">--</span><span class="countdown-heading hours-top">Hours</span></div>
+                        <div class="countdown-container minutes"><span class="countdown-value minutes-bottom"
+                                id="minutes-number">--</span><span class="countdown-heading minutes-top">Minutes</span>
+                        </div>
+                        <div class="countdown-container seconds"><span class="countdown-value seconds-bottom"
+                                id="seconds-number">--</span><span class="countdown-heading seconds-top">Seconds</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -67,17 +67,17 @@
             </div>
 
             <div class="row">
-
                 <div id="jp_container_2" class="jp-audio" role="application" aria-label="media player">
                     <div class="jp-type-playlist">
                         <div class="jp-gui jp-interface">
                             <div class="music-player">
                                 <!-- audio标签 -->
-                                <audio class="music-player__audio" src="./audio/1.mp3"></audio>
+                                <audio class="music-player__audio" id="audio-item" src="./audio/1.mp3"></audio>
                                 <!-- 播放器主体 -->
                                 <div class="music-player__main">
                                     <!-- 模糊背景 -->
-                                    <div class="music-player__blur" style="background-image: url(&quot;./images/yanyuan.jpg&quot;);"></div>
+                                    <div class="music-player__blur"
+                                        style="background-image: url('./images/yanyuan.jpg');"></div>
                                     <!-- 唱片 -->
                                     <div class="music-player__disc">
                                         <!-- 唱片图片 -->
@@ -85,39 +85,57 @@
                                             <img width="100%" src="./images/yanyuan.jpg" alt="">
                                         </div>
                                         <!-- 指针 -->
-                                        <div class="music-player__pointer play"><img width="100%" src="./images/cd_tou.png" alt=""></div>
+                                        <div class="music-player__pointer play"><img width="100%"
+                                                src="./images/cd_tou.png" alt=""></div>
                                     </div>
                                     <!-- 控件主体 -->
                                     <div class="music-player__controls">
                                         <!-- 歌曲信息 -->
                                         <div class="music__info">
-                                            <h3 class="music__info--title">演员</h3>
-                                            <p class="music__info--singer">薛之谦</p>
+                                            <h3 class="music__info--title" id="song-title">演员</h3>
+                                            <p class="music__info--singer" id="song-singer">薛之谦</p>
                                         </div>
                                         <!-- 控件... -->
                                         <div class="player-control">
                                             <div class="player-control__content">
                                                 <div class="player-control__btns">
-                                                    <div class="player-control__btn player-control__btn--prev"><i class="iconfont icon-prev"></i></div>
-                                                    <div class="player-control__btn player-control__btn--play"><i class="iconfont icon-pause"></i></div>
-                                                    <div class="player-control__btn player-control__btn--next"><i class="iconfont icon-next"></i></div>
-                                                    <div class="player-control__btn player-control__btn--mode"><i class="iconfont icon-single"></i></div>
+                                                    <div class="player-control__btn player-control__btn--next"
+                                                        id="previous" onclick="previous();">
+                                                        <img src="./images/music_previous.png"></div>
+                                                    <div class="player-control__btn player-control__btn--play" id="play"
+                                                        onclick="play();">
+                                                        <img src="./images/music_play.png"></div>
+                                                    <div class="player-control__btn player-control__btn--play" id="stop"
+                                                        style="display: none;" onclick="pauseplay();">
+                                                        <img src="./images/music_stop.png"></div>
+                                                    <div class="player-control__btn player-control__btn--next" id="next"
+                                                        onclick="next();">
+                                                        <img src="./images/music_next.png"></div>
                                                 </div>
                                                 <div class="player-control__volume">
-                                                    <div class="control__volume--icon player-control__btn"><i class="iconfont icon-volume"></i></div>
-                                                    <div class="control__volume--progress progress"><div class="back" style="width: 73px;"></div><div class="pointer" style="left: 66px;"></div></div>
+                                                    <div class="control__volume--icon player-control__btn" id="sound" onclick="minus();">
+                                                        <img src="./images/sound.png"></div>
+                                                    <div class="control__volume--icon player-control__btn" id="minus" style="display: none;" onclick="sound();">
+                                                            <img src="./images/sound_minus.png"></div>
+                                                    <div class="control__volume--progress progress">
+                                                        <div class="back" style="width: 73px;"></div>
+                                                    </div>
                                                 </div>
                                             </div>
-                        
+
                                             <!-- 歌曲播放进度 -->
                                             <div class="player-control__content">
-                                                <div class="player__song--progress progress"><div class="back" style="width: 289.691px;"></div><div class="pointer" style="left: 282.691px;"></div></div>
-                                                <div class="player__song--timeProgess nowTime">00:24</div>
-                                                <div class="player__song--timeProgess totalTime">00:28</div>
+                                                <div class="player__song--progress progress">
+                                                    <div class="back" id="bar"></div>
+                                                    <!-- <div class="pointer" id="bar" style="left: 282.691px;"></div> -->
+                                                </div>
+                                                <div class="player__song--timeProgess nowTime" id="nowTime">0:00</div>
+                                                <div class="player__song--timeProgess totalTime" id="totalTime">0:00
+                                                </div>
                                             </div>
-                        
+
                                         </div>
-                        
+
                                     </div>
                                 </div>
                             </div>
@@ -130,88 +148,10 @@
                                             class="jp-playlist-item jp-playlist-current" tabindex="0">Cro Magnon Man</a>
                                     </div>
                                 </li>
-                                <li>
-                                    <div><a href="javascript:;" class="jp-playlist-item-remove"
-                                            style="display: none;">×</a><a href="javascript:;" class="jp-playlist-item"
-                                            tabindex="0">Your Face</a></div>
-                                </li>
-                                <li>
-                                    <div><a href="javascript:;" class="jp-playlist-item-remove"
-                                            style="display: none;">×</a><a href="javascript:;" class="jp-playlist-item"
-                                            tabindex="0">Cyber Sonnet</a></div>
-                                </li>
-                                <li>
-                                    <div><a href="javascript:;" class="jp-playlist-item-remove"
-                                            style="display: none;">×</a><a href="javascript:;" class="jp-playlist-item"
-                                            tabindex="0">Tempered Song</a></div>
-                                </li>
-                                <li>
-                                    <div><a href="javascript:;" class="jp-playlist-item-remove"
-                                            style="display: none;">×</a><a href="javascript:;" class="jp-playlist-item"
-                                            tabindex="0">Hidden</a></div>
-                                </li>
-                                <li>
-                                    <div><a href="javascript:;" class="jp-playlist-item-remove"
-                                            style="display: none;">×</a><span class="jp-free-media">(<a
-                                                class="jp-playlist-item-free"
-                                                href="http://www.jplayer.org/audio/mp3/Miaow-03-Lentement.mp3"
-                                                tabindex="-1">mp3</a> | <a class="jp-playlist-item-free"
-                                                href="http://www.jplayer.org/audio/ogg/Miaow-03-Lentement.ogg"
-                                                tabindex="-1">oga</a>)</span><a href="javascript:;"
-                                            class="jp-playlist-item" tabindex="0">Lentement</a></div>
-                                </li>
-                                <li>
-                                    <div><a href="javascript:;" class="jp-playlist-item-remove"
-                                            style="display: none;">×</a><a href="javascript:;" class="jp-playlist-item"
-                                            tabindex="0">Lismore</a></div>
-                                </li>
-                                <li>
-                                    <div><a href="javascript:;" class="jp-playlist-item-remove"
-                                            style="display: none;">×</a><a href="javascript:;" class="jp-playlist-item"
-                                            tabindex="0">The Separation</a></div>
-                                </li>
-                                <li>
-                                    <div><a href="javascript:;" class="jp-playlist-item-remove"
-                                            style="display: none;">×</a><a href="javascript:;" class="jp-playlist-item"
-                                            tabindex="0">Beside Me</a></div>
-                                </li>
-                                <li>
-                                    <div><a href="javascript:;" class="jp-playlist-item-remove"
-                                            style="display: none;">×</a><span class="jp-free-media">(<a
-                                                class="jp-playlist-item-free"
-                                                href="http://www.jplayer.org/audio/mp3/Miaow-07-Bubble.mp3"
-                                                tabindex="-1">mp3</a> | <a class="jp-playlist-item-free"
-                                                href="http://www.jplayer.org/audio/ogg/Miaow-07-Bubble.ogg"
-                                                tabindex="-1">oga</a>)</span><a href="javascript:;"
-                                            class="jp-playlist-item" tabindex="0">Bubble</a></div>
-                                </li>
-                                <li>
-                                    <div><a href="javascript:;" class="jp-playlist-item-remove"
-                                            style="display: none;">×</a><a href="javascript:;" class="jp-playlist-item"
-                                            tabindex="0">Stirring of a Fool</a></div>
-                                </li>
-                                <li>
-                                    <div><a href="javascript:;" class="jp-playlist-item-remove"
-                                            style="display: none;">×</a><span class="jp-free-media">(<a
-                                                class="jp-playlist-item-free"
-                                                href="http://www.jplayer.org/audio/mp3/Miaow-09-Partir.mp3"
-                                                tabindex="-1">mp3</a> | <a class="jp-playlist-item-free"
-                                                href="http://www.jplayer.org/audio/ogg/Miaow-09-Partir.ogg"
-                                                tabindex="-1">oga</a>)</span><a href="javascript:;"
-                                            class="jp-playlist-item" tabindex="0">Partir</a></div>
-                                </li>
-                                <li>
-                                    <div><a href="javascript:;" class="jp-playlist-item-remove"
-                                            style="display: none;">×</a><a href="javascript:;" class="jp-playlist-item"
-                                            tabindex="0">Thin Ice</a></div>
-                                </li>
+
                             </ul>
                         </div>
-                        <div class="jp-no-solution" style="display: none;">
-                            <span>Update Required</span>
-                            To play the media you will need to either update your browser to a recent version or update
-                            your Flash plugin.
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -222,32 +162,41 @@
 
 <script>
 
+    // Calculate the left time
     setInterval("countdown()", 1000);
 
-    // Define song list and current song id
-    let songs = [
-        '1.mp3', '2.mp3'
-    ]
+    // Define the current song id
     let currentSong = 0;
 
     // Define the length of current song
     let duration = 0;
 
-    // Show the menu of this website
-    menu();
-
-    // Change image when clicking on each thumb image
-    function changeImg(src) {
-        document.getElementById("product-show").setAttribute("src", src);
-    }
-
     // Play, pause, volume up and volume down
     let audiop = document.getElementById("audio-item");
     function play() {
         audiop.play();
+        document.getElementById("play").style.display = 'none';
+        document.getElementById("stop").style.display = 'block';
+
     }
     function pauseplay() {
         audiop.pause();
+        document.getElementById("play").style.display = 'block';
+        document.getElementById("stop").style.display = 'none';
+    }
+    
+    let lastVolume = 0;
+    function minus() {
+        lastVolume = audiop.volume;
+        audiop.volume = 0;
+        document.getElementById("sound").style.display = 'none';
+        document.getElementById("minus").style.display = 'block';
+
+    }
+    function sound() {
+        audiop.volume = lastVolume;
+        document.getElementById("sound").style.display = 'block';
+        document.getElementById("minus").style.display = 'none';
     }
     function volumeUp() {
         console.log(audiop.volume)
@@ -265,11 +214,21 @@
     // Next song function
     function next() {
         currentSong++;
-        if (currentSong > 1) {
+        if (currentSong > songs.length - 1) {
             currentSong = 0;
         }
-        audiop.setAttribute('src', './audio/' + songs[currentSong])
-        audiop.play();
+        audiop.setAttribute('src', './audio/' + songs[currentSong].path)
+        play();
+    }
+
+    // Previous song function
+    function previous() {
+        currentSong--;
+        if (currentSong < 0) {
+            currentSong = songs.length - 1;
+        }
+        audiop.setAttribute('src', './audio/' + songs[currentSong].path)
+        play();
     }
 
     // Calculate the process of this song
@@ -280,6 +239,25 @@
 
     audiop.addEventListener('timeupdate', updatePlayBar, false);
     function updatePlayBar() {
+        let minutes = (audiop.currentTime / 60).toFixed(0);
+        let seconds = (audiop.currentTime % 60).toFixed(0);
+        if (seconds < 10) {
+            seconds = '0' + seconds;
+        }
+        document.getElementById("nowTime").innerText = minutes + ':' + seconds;
+
+        console.log(audiop.duration);
+        if (!isNaN(audiop.duration)) {
+            minutes = (audiop.duration / 60).toFixed(0);
+            seconds = (audiop.duration % 60).toFixed(0);
+            if (seconds < 10) {
+                seconds = '0' + seconds;
+            }
+            document.getElementById("totalTime").innerText = minutes + ':' + seconds;
+        }
+
+
+        // document.getElementById("nowTime").innerText = audiop.currentTime.toFixed(0);
         document.getElementById("bar").style.width = parseFloat(((audiop.currentTime / audiop.duration) * 100), 10) + "%";
     }
 
