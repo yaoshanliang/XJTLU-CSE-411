@@ -9,6 +9,7 @@
     <script src="./js/data.js"></script>
     <script src="./js/function.js"></script>
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/iconfont.css" />
 </head>
 
 <body>
@@ -55,49 +56,69 @@
             </div>
         </div>
         <!-- banner text -->
-
     </section>
     <!-- header section -->
 
     <section id="playlist" class="playlistList">
         <div class="container">
             <div class="section-header">
-                <h2 class="wow fadeInDown animated">Playlist</h2>
-                <p class="wow fadeInDown animated">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-                    eget risus vitae massa <br> semper aliquam quis mattis quam.</p>
+                <h2>Playlist</h2>
+                <p>Song list at the festival</p>
             </div>
+
             <div class="row">
-                <div id="jquery_jplayer_2" class="jp-jplayer" style="width: 0px; height: 0px;"><img id="jp_poster_0"
-                        style="width: 0px; height: 0px; display: none;"><audio id="jp_audio_0" preload="metadata"
-                        src="http://www.jplayer.org/audio/ogg/TSP-01-Cro_magnon_man.ogg" title="Cro Magnon Man"></audio>
-                </div>
+
                 <div id="jp_container_2" class="jp-audio" role="application" aria-label="media player">
                     <div class="jp-type-playlist">
                         <div class="jp-gui jp-interface">
-                            <div class="jp-volume-controls">
-                                <button class="jp-mute" role="button" tabindex="0">mute</button>
-                                <button class="jp-volume-max" role="button" tabindex="0">max volume</button>
-                                <div class="jp-volume-bar">
-                                    <div class="jp-volume-bar-value" style="width: 80%;"></div>
-                                </div>
-                            </div>
-                            <div class="jp-controls-holder">
-                                <div class="jp-controls">
-                                    <button class="jp-previous" role="button" tabindex="0">previous</button>
-                                    <button class="jp-play" role="button" tabindex="0">play</button>
-                                    <button class="jp-stop" role="button" tabindex="0">stop</button>
-                                    <button class="jp-next" role="button" tabindex="0">next</button>
-                                </div>
-                                <div class="jp-progress">
-                                    <div class="jp-seek-bar" style="width: 100%;">
-                                        <div class="jp-play-bar" style="width: 0%;"></div>
+                            <div class="music-player">
+                                <!-- audio标签 -->
+                                <audio class="music-player__audio" src="./audio/1.mp3"></audio>
+                                <!-- 播放器主体 -->
+                                <div class="music-player__main">
+                                    <!-- 模糊背景 -->
+                                    <div class="music-player__blur" style="background-image: url(&quot;./images/yanyuan.jpg&quot;);"></div>
+                                    <!-- 唱片 -->
+                                    <div class="music-player__disc">
+                                        <!-- 唱片图片 -->
+                                        <div class="music-player__image play">
+                                            <img width="100%" src="./images/yanyuan.jpg" alt="">
+                                        </div>
+                                        <!-- 指针 -->
+                                        <div class="music-player__pointer play"><img width="100%" src="./images/cd_tou.png" alt=""></div>
                                     </div>
-                                </div>
-                                <div class="jp-current-time" role="timer" aria-label="time">00:00</div>
-                                <div class="jp-duration" role="timer" aria-label="duration">00:00</div>
-                                <div class="jp-toggles">
-                                    <button class="jp-repeat" role="button" tabindex="0">repeat</button>
-                                    <button class="jp-shuffle" role="button" tabindex="0">shuffle</button>
+                                    <!-- 控件主体 -->
+                                    <div class="music-player__controls">
+                                        <!-- 歌曲信息 -->
+                                        <div class="music__info">
+                                            <h3 class="music__info--title">演员</h3>
+                                            <p class="music__info--singer">薛之谦</p>
+                                        </div>
+                                        <!-- 控件... -->
+                                        <div class="player-control">
+                                            <div class="player-control__content">
+                                                <div class="player-control__btns">
+                                                    <div class="player-control__btn player-control__btn--prev"><i class="iconfont icon-prev"></i></div>
+                                                    <div class="player-control__btn player-control__btn--play"><i class="iconfont icon-pause"></i></div>
+                                                    <div class="player-control__btn player-control__btn--next"><i class="iconfont icon-next"></i></div>
+                                                    <div class="player-control__btn player-control__btn--mode"><i class="iconfont icon-single"></i></div>
+                                                </div>
+                                                <div class="player-control__volume">
+                                                    <div class="control__volume--icon player-control__btn"><i class="iconfont icon-volume"></i></div>
+                                                    <div class="control__volume--progress progress"><div class="back" style="width: 73px;"></div><div class="pointer" style="left: 66px;"></div></div>
+                                                </div>
+                                            </div>
+                        
+                                            <!-- 歌曲播放进度 -->
+                                            <div class="player-control__content">
+                                                <div class="player__song--progress progress"><div class="back" style="width: 289.691px;"></div><div class="pointer" style="left: 282.691px;"></div></div>
+                                                <div class="player__song--timeProgess nowTime">00:24</div>
+                                                <div class="player__song--timeProgess totalTime">00:28</div>
+                                            </div>
+                        
+                                        </div>
+                        
+                                    </div>
                                 </div>
                             </div>
                         </div>
