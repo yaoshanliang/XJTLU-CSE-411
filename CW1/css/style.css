@@ -475,6 +475,7 @@ ul li {
 .music-player {
   position: relative;
   margin: 10px auto;
+  margin-bottom: 20px;
 }
 
 /* 歌曲列表 */
