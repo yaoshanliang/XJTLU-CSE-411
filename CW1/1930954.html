@@ -72,28 +72,24 @@
                         <div class="jp-gui jp-interface">
                             <div class="music-player">
                                 <!-- audio标签 -->
-                                <audio class="music-player__audio" id="audio-item" src="./audio/1.mp3"></audio>
+                                <audio class="music-player__audio" id="audio-item" src=""></audio>
                                 <!-- 播放器主体 -->
                                 <div class="music-player__main">
                                     <!-- 模糊背景 -->
-                                    <div class="music-player__blur"
-                                        style="background-image: url('./images/yanyuan.jpg');"></div>
+                                    <div class="music-player__blur" id="song-background"></div>
                                     <!-- 唱片 -->
                                     <div class="music-player__disc">
                                         <!-- 唱片图片 -->
-                                        <div class="music-player__image play">
-                                            <img width="100%" src="./images/yanyuan.jpg" alt="">
+                                        <div class="music-player__image">
+                                            <img width="100%" id="song-icon" src="" alt="">
                                         </div>
-                                        <!-- 指针 -->
-                                        <div class="music-player__pointer play"><img width="100%"
-                                                src="./images/cd_tou.png" alt=""></div>
                                     </div>
                                     <!-- 控件主体 -->
                                     <div class="music-player__controls">
                                         <!-- 歌曲信息 -->
                                         <div class="music__info">
-                                            <h3 class="music__info--title" id="song-title">演员</h3>
-                                            <p class="music__info--singer" id="song-singer">薛之谦</p>
+                                            <h3 class="music__info--title" id="song-name"></h3>
+                                            <p class="music__info--singer" id="song-singer"></p>
                                         </div>
                                         <!-- 控件... -->
                                         <div class="player-control">
@@ -113,10 +109,12 @@
                                                         <img src="./images/music_next.png"></div>
                                                 </div>
                                                 <div class="player-control__volume">
-                                                    <div class="control__volume--icon player-control__btn" id="sound" onclick="minus();">
+                                                    <div class="control__volume--icon player-control__btn" id="sound"
+                                                        onclick="minus();">
                                                         <img src="./images/sound.png"></div>
-                                                    <div class="control__volume--icon player-control__btn" id="minus" style="display: none;" onclick="sound();">
-                                                            <img src="./images/sound_minus.png"></div>
+                                                    <div class="control__volume--icon player-control__btn" id="minus"
+                                                        style="display: none;" onclick="sound();">
+                                                        <img src="./images/sound_minus.png"></div>
                                                     <div class="control__volume--progress progress">
                                                         <div class="back" style="width: 73px;"></div>
                                                     </div>
@@ -140,16 +138,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="jp-playlist">
-                            <ul style="display: block;">
-                                <li class="jp-playlist-current">
-                                    <div><a href="javascript:;" class="jp-playlist-item-remove"
-                                            style="display: none;">×</a><a href="javascript:;"
-                                            class="jp-playlist-item jp-playlist-current" tabindex="0">Cro Magnon Man</a>
-                                    </div>
-                                </li>
+                        <div class="jp-playlist" id="songlist">
 
-                            </ul>
                         </div>
 
                     </div>
@@ -175,16 +165,27 @@
     let audiop = document.getElementById("audio-item");
     function play() {
         audiop.play();
+        document.getElementsByClassName("music-player__image")[0].classList.add("play");
         document.getElementById("play").style.display = 'none';
         document.getElementById("stop").style.display = 'block';
+        for (let i = 0; i < songs.length; i++) {
+            if (i == currentSong) {
+                document.getElementById("song-name").innerText = songs[i].name;
+                document.getElementById("song-singer").innerText = songs[i].singer;
+                document.getElementById("song-icon").setAttribute("src", './audio/' + songs[i].image);
+                document.getElementById("song-background").setAttribute("backgroundImage", './audio/' + songs[i].image);
+
+            }
+        }
 
     }
     function pauseplay() {
         audiop.pause();
+        document.getElementsByClassName("music-player__image")[0].classList.remove("play");
         document.getElementById("play").style.display = 'block';
         document.getElementById("stop").style.display = 'none';
     }
-    
+
     let lastVolume = 0;
     function minus() {
         lastVolume = audiop.volume;
@@ -246,7 +247,6 @@
         }
         document.getElementById("nowTime").innerText = minutes + ':' + seconds;
 
-        console.log(audiop.duration);
         if (!isNaN(audiop.duration)) {
             minutes = (audiop.duration / 60).toFixed(0);
             seconds = (audiop.duration % 60).toFixed(0);
@@ -260,6 +260,31 @@
         // document.getElementById("nowTime").innerText = audiop.currentTime.toFixed(0);
         document.getElementById("bar").style.width = parseFloat(((audiop.currentTime / audiop.duration) * 100), 10) + "%";
     }
+
+    let html = '';
+    for (let i = 0; i < songs.length; i++) {
+        html += '<div class="songItem" onclick="playSong(' + i + ')">' +
+            '<img class="songImage" src="./audio/' + songs[i].image + '">' +
+            '<div class="songName">' + songs[i].name + '</div>' +
+            '<div class="songSinger">' + songs[i].singer + '</div>' +
+            '</div>';
+    }
+
+    document.getElementById("songlist").innerHTML = html;
+
+    function playSong(id) {
+        console.log(id);
+        currentSong = id;
+        audiop.setAttribute('src', './audio/' + songs[currentSong].path);
+        play();
+    }
+
+    // Init the first song
+    audiop.setAttribute('src', './audio/' + songs[0].path);
+    document.getElementById("song-name").innerText = songs[0].name;
+    document.getElementById("song-singer").innerText = songs[0].singer;
+    document.getElementById("song-icon").setAttribute("src", './audio/' + songs[0].image);
+    document.getElementById("song-background").setAttribute("background-image", "url(" + './audio/' + songs[0].image + ")");
 
 </script>
 
