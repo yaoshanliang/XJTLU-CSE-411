@@ -776,3 +776,6 @@ ul li {
   width: 450px;
   height: 50px;
 }
+.currentSong {
+  background-color: #ce0518;
+}

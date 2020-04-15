@@ -168,12 +168,16 @@
         document.getElementsByClassName("music-player__image")[0].classList.add("play");
         document.getElementById("play").style.display = 'none';
         document.getElementById("stop").style.display = 'block';
+
         for (let i = 0; i < songs.length; i++) {
+            document.getElementsByClassName("songItem")[i].classList.remove("currentSong");
+
             if (i == currentSong) {
                 document.getElementById("song-name").innerText = songs[i].name;
                 document.getElementById("song-singer").innerText = songs[i].singer;
                 document.getElementById("song-icon").setAttribute("src", './audio/' + songs[i].image);
                 document.getElementById("song-background").setAttribute("backgroundImage", './audio/' + songs[i].image);
+                document.getElementsByClassName("songItem")[i].classList.add("currentSong");
 
             }
         }
@@ -263,7 +267,7 @@
 
     let html = '';
     for (let i = 0; i < songs.length; i++) {
-        html += '<div class="songItem" onclick="playSong(' + i + ')">' +
+        html += '<div class="songItem" id="song-item-' + i + '"  onclick="playSong(' + i + ')">' +
             '<img class="songImage" src="./audio/' + songs[i].image + '">' +
             '<div class="songName">' + songs[i].name + '</div>' +
             '<div class="songSinger">' + songs[i].singer + '</div>' +
@@ -285,7 +289,7 @@
     document.getElementById("song-singer").innerText = songs[0].singer;
     document.getElementById("song-icon").setAttribute("src", './audio/' + songs[0].image);
     document.getElementById("song-background").setAttribute("background-image", "url(" + './audio/' + songs[0].image + ")");
-
+    document.getElementsByClassName("songItem")[0].classList.add("currentSong");
 </script>
 
 </html>
