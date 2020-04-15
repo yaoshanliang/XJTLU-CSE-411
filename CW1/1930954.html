@@ -110,13 +110,20 @@
                                                 </div>
                                                 <div class="player-control__volume">
                                                     <div class="control__volume--icon player-control__btn" id="sound"
-                                                        onclick="minus();">
+                                                        onclick="mute();">
                                                         <img src="./images/sound.png"></div>
-                                                    <div class="control__volume--icon player-control__btn" id="minus"
+                                                    <div class="control__volume--icon player-control__btn" id="mute"
                                                         style="display: none;" onclick="sound();">
-                                                        <img src="./images/sound_minus.png"></div>
+                                                        <img src="./images/sound_mute.png"></div>
                                                     <div class="control__volume--progress progress">
-                                                        <div class="back" style="width: 73px;"></div>
+                                                        <div class="back" id="volumeBar"></div>
+                                                    </div>
+                                                    <div class="control__volume--icon player-control__btn" id="minus"
+                                                        onclick="volumeDown();">
+                                                        <img src="./images/minus.png">
+                                                    </div>
+                                                    <div class="control__volume--icon player-control__btn" id="add"
+                                                        onclick="volumeUp();"><img src="./images/add.png">
                                                     </div>
                                                 </div>
                                             </div>
@@ -191,29 +198,32 @@
     }
 
     let lastVolume = 0;
-    function minus() {
+    function mute() {
         lastVolume = audiop.volume;
         audiop.volume = 0;
         document.getElementById("sound").style.display = 'none';
-        document.getElementById("minus").style.display = 'block';
-
+        document.getElementById("mute").style.display = 'block';
+        document.getElementById("volumeBar").style.width = "0%";
     }
     function sound() {
         audiop.volume = lastVolume;
         document.getElementById("sound").style.display = 'block';
-        document.getElementById("minus").style.display = 'none';
+        document.getElementById("mute").style.display = 'none';
+        document.getElementById("volumeBar").style.width = parseFloat((lastVolume * 100), 10) + "%";
     }
     function volumeUp() {
         console.log(audiop.volume)
         if (audiop.volume < 1) {
             audiop.volume = audiop.volume + 0.1;
         }
+        document.getElementById("volumeBar").style.width = parseFloat((audiop.volume * 100), 10) + "%";
     }
     function volumeDown() {
         console.log(audiop.volume)
         if (audiop.volume > 0) {
             audiop.volume = audiop.volume - 0.1;
         }
+        document.getElementById("volumeBar").style.width = parseFloat((audiop.volume * 100), 10) + "%";
     }
 
     // Next song function
@@ -260,8 +270,6 @@
             document.getElementById("totalTime").innerText = minutes + ':' + seconds;
         }
 
-
-        // document.getElementById("nowTime").innerText = audiop.currentTime.toFixed(0);
         document.getElementById("bar").style.width = parseFloat(((audiop.currentTime / audiop.duration) * 100), 10) + "%";
     }
 
@@ -290,6 +298,8 @@
     document.getElementById("song-icon").setAttribute("src", './audio/' + songs[0].image);
     document.getElementById("song-background").setAttribute("background-image", "url(" + './audio/' + songs[0].image + ")");
     document.getElementsByClassName("songItem")[0].classList.add("currentSong");
+    document.getElementById("volumeBar").style.width = parseFloat((audiop.volume * 100), 10) + "%";
+
 </script>
 
 </html>
