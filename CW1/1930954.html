@@ -59,7 +59,8 @@
     </section>
     <!-- header section -->
 
-    <section id="playlist" class="playlistList">
+    <!-- playlist section -->
+    <section id="playlist" class="playlist">
         <div class="container">
             <div class="section-header">
                 <h2>Playlist</h2>
@@ -71,27 +72,20 @@
                     <div class="jp-type-playlist">
                         <div class="jp-gui jp-interface">
                             <div class="music-player">
-                                <!-- audio标签 -->
+                                <!-- audio -->
                                 <audio class="music-player__audio" id="audio-item" src=""></audio>
-                                <!-- 播放器主体 -->
                                 <div class="music-player__main">
-                                    <!-- 模糊背景 -->
                                     <div class="music-player__blur" id="song-background"></div>
-                                    <!-- 唱片 -->
                                     <div class="music-player__disc">
-                                        <!-- 唱片图片 -->
                                         <div class="music-player__image">
                                             <img width="100%" id="song-icon" src="" alt="">
                                         </div>
                                     </div>
-                                    <!-- 控件主体 -->
                                     <div class="music-player__controls">
-                                        <!-- 歌曲信息 -->
                                         <div class="music__info">
                                             <h3 class="music__info--title" id="song-name"></h3>
                                             <p class="music__info--singer" id="song-singer"></p>
                                         </div>
-                                        <!-- 控件... -->
                                         <div class="player-control">
                                             <div class="player-control__content">
                                                 <div class="player-control__btns">
@@ -128,11 +122,9 @@
                                                 </div>
                                             </div>
 
-                                            <!-- 歌曲播放进度 -->
                                             <div class="player-control__content">
                                                 <div class="player__song--progress progress">
                                                     <div class="back" id="bar"></div>
-                                                    <!-- <div class="pointer" id="bar" style="left: 282.691px;"></div> -->
                                                 </div>
                                                 <div class="player__song--timeProgess nowTime" id="nowTime">0:00</div>
                                                 <div class="player__song--timeProgess totalTime" id="totalTime">0:00
@@ -145,6 +137,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!--play list-->
                         <div class="jp-playlist" id="songlist">
 
                         </div>
@@ -154,6 +147,30 @@
             </div>
         </div>
     </section>
+    <!-- playlist section -->
+
+    <!-- gallery section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>Gallery</h2>
+                <p>Images at the past festival</p>
+            </div>
+
+            <div class="row" id="galleryList">
+            </div>
+        </div>
+
+        <div id="zoom" style="display: none;">
+            <a class="close" onclick="closeImage();"></a>
+            <a class="previous" onclick="previousImage();"></a>
+            <a class="next" onclick="nextImage();"></a>
+            <div class="content" style="width: 441px; height: 660px; margin-top: -330px; margin-left: -320.5px;">
+                <img id="zoomImage" width="600px;" height="500;">
+            </div>
+        </div>
+    </section>
+
 
 </body>
 
@@ -299,6 +316,44 @@
     document.getElementById("song-background").setAttribute("background-image", "url(" + './audio/' + songs[0].image + ")");
     document.getElementsByClassName("songItem")[0].classList.add("currentSong");
     document.getElementById("volumeBar").style.width = parseFloat((audiop.volume * 100), 10) + "%";
+
+
+
+    let currentImage = 0;
+    html = '';
+    for (let i = 0; i < gallery.length; i++) {
+        html += '<div class="col-md-3"  onclick="showImage(' + i + ')">' +
+                    '<img class="galleryImage" src="./gallery/' + gallery[i] + '">' +
+                '</div>';
+    }
+    document.getElementById("galleryList").innerHTML = html;
+
+    function showImage(id) {
+        currentImage = id;
+        document.getElementById("zoomImage").setAttribute("src", './gallery/' + gallery[id]);
+        document.getElementById("zoom").style.display = 'block';
+    }
+    function closeImage() {
+        document.getElementById("zoomImage").setAttribute("src", '');
+        document.getElementById("zoom").style.display = 'none';
+    }
+    function previousImage() {
+        currentImage--;
+        if (currentImage < 0) {
+            currentImage = currentImage.length - 1;
+        }
+        document.getElementById("zoomImage").setAttribute("src", './gallery/' + gallery[currentImage]);
+    }
+
+    function nextImage() {
+        currentImage++;
+        if (currentImage > currentImage.length - 1) {
+            currentImage = 0;
+        }
+        document.getElementById("zoomImage").setAttribute("src", './gallery/' + gallery[currentImage]);
+    }
+
+
 
 </script>
 

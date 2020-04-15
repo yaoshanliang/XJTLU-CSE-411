@@ -104,7 +104,7 @@ ul li {
   position: fixed;
   width: 100%;
   z-index: 999;
-  background: transparent;
+  background: #010544e6;
   min-height: 72px;
 }
 #header .header-content {
@@ -126,7 +126,7 @@ ul li {
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 7px;
-  background: #ce0518;
+  background:#010544e6;
   position: absolute;
   top: 0px;
   bottom: 0px;
@@ -341,7 +341,7 @@ ul li {
 }
 
 .banner {
-  background-image: url(../images/banner.jpg);
+  background-image: url(../images/bannerBg.jpg);
   background-position: center top;
   background-repeat: no-repeat;
   -moz-background-size: cover;
@@ -362,7 +362,7 @@ ul li {
   font-weight: normal;
 }
 .banner-text h1 {
-  color: #ffffff;
+  color: #010544e6;
   font-family: "Baloo Bhaijaan", cursive;
   font-size: 100px;
   font-weight: 700;
@@ -373,7 +373,7 @@ ul li {
   font-style: normal;
 }
 .banner-text p {
-  color: #ffffff;
+  color: #e362d5;
   font-size: 50px;
   font-weight: 700;
   line-height: normal;
@@ -404,7 +404,7 @@ ul li {
 .countdown-container{
   margin-right: 15px;
   padding: 15px; 
-  border: 10px solid #ce0518; 
+  border: 10px solid #010544e6; 
   background-color: #ffffff;
 } 
 .countdown-container .countdown-value{
@@ -762,6 +762,7 @@ ul li {
   display: inline-block;
   width: 50px;
   height: 50px;
+  border-radius: 5px;
 }
 .songName {
   display: inline-block;
@@ -778,5 +779,95 @@ ul li {
   height: 50px;
 }
 .currentSong {
-  background-color: #ce0518;
+  background-color: #010544e6;
+}
+
+.col-md-3 {
+  width: 25%;
+  float: left;
+  padding-top: 12px;
+}
+.gallery {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background: #da1b2d;
+  height: 1000px;
+}
+.playlist {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.galleryImage {
+  width: 220px;
+  height: 220px;
+  transform: scale(1);
+  opacity: 1;
+  border-radius: 8px;
+  cursor: pointer;
+}
+#zoom {
+  z-index: 99990;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+}
+#zoom .close {
+  z-index: 99993;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 49px;
+  height: 49px;
+  cursor: pointer;
+  background: transparent url(../images/close.png) no-repeat 50% 50%;
+  opacity: 1;
+  filter: alpha(opacity=100);
+  border-radius: 0 0 0 4px;
+}
+#zoom .previous {
+  left: 0;
+  background: url(../images/arrows.png) no-repeat 0 0;
+  border-radius: 0 4px 4px 0;
+}
+#zoom .previous:hover, #zoom .next:hover {
+  background-color: #0088cc;
+}
+#zoom .next {
+  right: 0;
+  background: url(../images/arrows.png) no-repeat 100% 0;
+  border-radius: 4px 0 0 4px;
+}
+#zoom .previous, #zoom .next {
+  z-index: 99992;
+  position: absolute;
+  top: 50%;
+  overflow: hidden;
+  display: block;
+  width: 49px;
+  height: 49px;
+  margin-top: -25px;
+}
+#zoom img {
+  display: block;
+  max-width: none;
+  background: #ececec;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  border-radius: 4px;
+}
+
+#zoom .content {
+  z-index: 99991;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  padding: 0;
+  margin: -100px 0 0 -100px;
+  box-shadow: -20px 20px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
 }
