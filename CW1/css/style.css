@@ -902,15 +902,21 @@ ul li {
 .services .section-header p{ color: #404040;}
 .services-content {
 	padding: 30px 30px 20px;
-	/* margin-top: 30px; */
+	margin-top: 30px;
 	border: 1px solid rgba(60, 60, 60, 0.53);
-	/* border-radius: 10px; */
+	border-radius: 8px;
 	text-align: center;
 	color: #fff;
 	background: #fff;
 }
 .services-content p{
-	/* color: rgba(255, 255, 255, 0.81); */
+  text-align: left;
+  
+}
+.services-content h5 {
+  height: 35px;
+	color: #da1b2d;
+
 }
 .services .icon {
 	color: #da1b2d;
