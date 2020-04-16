@@ -28,8 +28,8 @@
                         <li><a href="#banner" class="active">Home</a></li>
                         <li><a href="#playlist" class="">Playlist</a></li>
                         <li><a href="#gallery" class="">Gallery</a></li>
-                        <li><a href="#information" class="">Information</a></li>
-                        <li><a href="#app" class="">APP</a></li>
+                        <li><a href="#information" class="">About</a></li>
+                        <li><a href="#app" class="">Map</a></li>
                     </ul>
                 </nav>
             </div>
@@ -442,10 +442,13 @@
     // });
 
     var panorama = new BMap.Panorama('panorama');
-    panorama.setPosition(new BMap.Point(120.74580310559392,31.27993518548611)); //根据经纬度坐标展示全景图
-    // panorama.setPosition(new BMap.Point(120.7458,31.279)); //根据经纬度坐标展示全景图
+    // panorama.setPosition(new BMap.Point(120.74580310559392,31.27993518548611)); //根据经纬度坐标展示全景图
+    panorama.setPosition(new BMap.Point(120.746339, 31.279684)); //根据经纬度坐标展示全景图
     // panorama.setPov({ heading: 200, pitch: 0 });
+    console.log(panorama.getPov());
     panorama.setPov({heading:100,pitch : 0});
+    console.log(panorama.getPov());
+
     // panorama.setPov({heading: -40, pitch: 6});
 
 
