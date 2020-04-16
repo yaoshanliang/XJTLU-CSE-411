@@ -9,7 +9,7 @@
     <script src="./js/data.js"></script>
     <script src="./js/function.js"></script>
     <script type="text/javascript"
-        src="https://api.map.baidu.com/api?v=3.0&ak=7YPyMbkBMCsimw2pVN0aYbXYzRO9R9ji"></script>
+        src="http://api.map.baidu.com/api?v=3.0&ak=E4805d16520de693a3fe707cdc962045"></script>
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/iconfont.css" />
 </head>
@@ -180,29 +180,43 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="wow fadeInDown animated">About the festival</h2>
-                <p class="wow fadeInDown animated">XJTLU Music Festival is an annual large-scale music event organized by the XJTLU Music Lovers Association.<br> Music lovers from more than 50 countries around the world will gather here to enjoy the shock and charm brought by music.</p>
+                <p class="wow fadeInDown animated">XJTLU Music Festival is an annual large-scale music event organized
+                    by the XJTLU Music Lovers Association.<br> Music lovers from more than 50 countries around the world
+                    will gather here to enjoy the shock and charm brought by music.</p>
             </div>
             <div class="row">
                 <div class="col-md-4 col-sm-6 services text-center">
-                     <img src="./images/music1.png"/>
+                    <img src="./images/music1.png" />
                     <div class="services-content">
                         <h5>XJTLU</h5>
-                        <p>Xi’an Jiaotong-Liverpool University (XJTLU) is an international joint venture university founded by Xi’an Jiaotong University in China and the University of Liverpool in the United Kingdom. As an independent Sino-foreign cooperative university, it captures the essence of both prestigious parent universities and is the first and only one of its kind approved by the Ministry of Education in China.</p>
+                        <p>Xi’an Jiaotong-Liverpool University (XJTLU) is an international joint venture university
+                            founded by Xi’an Jiaotong University in China and the University of Liverpool in the United
+                            Kingdom. As an independent Sino-foreign cooperative university, it captures the essence of
+                            both prestigious parent universities and is the first and only one of its kind approved by
+                            the Ministry of Education in China.</p>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6 services text-center">
-                    <img src="./images/music2.png"/>
+                    <img src="./images/music2.png" />
                     <div class="services-content">
                         <h5>XJTLU Music Lovers Association</h5>
-                        <p>XJTLU Music Lovers Association is composed of college students, including undergraduates, graduate students, and doctoral students. They all have musical talents, and many people have achieved excellent results in domestic and international competitions. They also often organize various musical activities, enrich the spare time of the school, and promote the exchanges between students.</p>
+                        <p>XJTLU Music Lovers Association is composed of college students, including undergraduates,
+                            graduate students, and doctoral students. They all have musical talents, and many people
+                            have achieved excellent results in domestic and international competitions. They also often
+                            organize various musical activities, enrich the spare time of the school, and promote the
+                            exchanges between students.</p>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6 services text-center"> 
-                    <img src="./images/music3.png"/>
+                <div class="col-md-4 col-sm-6 services text-center">
+                    <img src="./images/music3.png" />
 
                     <div class="services-content">
                         <h5>XJTLU Music Festival</h5>
-                        <p>The XJTLU Music Festival has been successfully held for six sessions, attracting more than 100 famous singers to sing. The 2020 music festival will invite more than 20 excellent singers to sing, and more than 3,000 students and teachers will be able to enjoy the festival. At the music festival, everyone can exchange music, create, and inspire each other, inspiring more music passion.</p>
+                        <p>The XJTLU Music Festival has been successfully held for six sessions, attracting more than
+                            100 famous singers to sing. The 2020 music festival will invite more than 20 excellent
+                            singers to sing, and more than 3,000 students and teachers will be able to enjoy the
+                            festival. At the music festival, everyone can exchange music, create, and inspire each
+                            other, inspiring more music passion.</p>
                     </div>
                 </div>
             </div>
@@ -220,7 +234,7 @@
             </div>
             <div id="map"></div>
             <div id="panorama"></div>
-	<div id="svInfoText"></div>
+            <div id="svInfoText"></div>
         </div>
     </section>
 
@@ -415,60 +429,35 @@
 
 
     // 百度地图API功能
-    // var map = new BMap.Map("map");  // 创建Map实例
-    // var point = new BMap.Point(120.746339, 31.279684); // 创建点坐标
-    // map.centerAndZoom(point, 17);
-    // map.enableScrollWheelZoom();                 //启用滚轮放大
-    // //添加地图类型控件
-    // map.addControl(new BMap.MapTypeControl({
-    //     mapTypes: [
-    //         BMAP_NORMAL_MAP,
-    //         BMAP_HYBRID_MAP
-    //     ]
-    // }));
+    var map = new BMap.Map("map");  // 创建Map实例
+    var point = new BMap.Point(120.746339, 31.279684); // 创建点坐标
+    map.centerAndZoom(point, 17);
+    map.enableScrollWheelZoom();                 //启用滚轮放大
+    //添加地图类型控件
+    map.addControl(new BMap.MapTypeControl({
+        mapTypes: [
+            BMAP_NORMAL_MAP,
+            BMAP_HYBRID_MAP
+        ]
+    }));
 
-    // map.addControl(new BMap.NavigationControl());
-    // var marker = new BMap.Marker(point);  // 创建标注
-    // map.addOverlay(marker);              // 将标注添加到地图中
-    // map.centerAndZoom(point, 15);
-    // var sContent =
-    //     "<h4 style='margin:0 0 5px 0;padding:0.2em 0'>Xi'an Jiaotong-Liverpool University</h4>" +
-    //     "<img style='float:right;margin:4px' id='imgDemo' src='./images/XJTLU.jpg' width='139' height='104' title='天安门'/>" +
-    //     "<p style='margin:0;line-height:1.5;font-size:13px;'>111 Ren'ai Road <br><br>Suzhou Dushu Lake Science and Education Innovation District<br> <br>Suzhou Industrial Park</p>" +
-    //     "</div>";
-    // var infoWindow = new BMap.InfoWindow(sContent);
-    // marker.addEventListener("click", function () {
-    //     map.openInfoWindow(infoWindow, point); //开启信息窗口
-    // });
+    map.addControl(new BMap.NavigationControl());
+    var marker = new BMap.Marker(point);  // 创建标注
+    map.addOverlay(marker);              // 将标注添加到地图中
+    map.centerAndZoom(point, 15);
+    var sContent =
+        "<h4 style='margin:0 0 5px 0;padding:0.2em 0'>Xi'an Jiaotong-Liverpool University</h4>" +
+        "<img style='float:right;margin:4px' id='imgDemo' src='./images/XJTLU.jpg' width='139' height='104' title='天安门'/>" +
+        "<p style='margin:0;line-height:1.5;font-size:13px;'>111 Ren'ai Road <br><br>Suzhou Dushu Lake Science and Education Innovation District<br> <br>Suzhou Industrial Park</p>" +
+        "</div>";
+    var infoWindow = new BMap.InfoWindow(sContent);
+    marker.addEventListener("click", function () {
+        map.openInfoWindow(infoWindow, point); //开启信息窗口
+    });
 
     var panorama = new BMap.Panorama('panorama');
-    // panorama.setPosition(new BMap.Point(120.74580310559392,31.27993518548611)); //根据经纬度坐标展示全景图
-    panorama.setPosition(new BMap.Point(120.746339, 31.279684)); //根据经纬度坐标展示全景图
-    // panorama.setPov({ heading: 200, pitch: 0 });
-    console.log(panorama.getPov());
-    panorama.setPov({heading:100,pitch : 0});
-    console.log(panorama.getPov());
+    panorama.setPosition(new BMap.Point(120.74568955977745,31.277849662778582)); //根据经纬度坐标展示全景图
 
-    // panorama.setPov({heading: -40, pitch: 6});
-
-
-
-    // var panorama = new BMap.Panorama('panorama');
-	// panorama.setPosition(new BMap.Point(120.74580310559392,31.27993518548611));
-	// panorama.addEventListener('position_changed', function(e){ //全景位置改变事件
-	//    panoramaCallBack(e);
-	// });
-	// panorama.addEventListener('pov_changed', function(e){ //全景视角改变事件
-	// 	panoramaCallBack(e);
-	// });
-	// function panoramaCallBack(e){ //事件回调函数
-	// 	if (e.type == 'onpov_changed') { 
-	// 		document.getElementById('svInfoText').innerHTML="全景视角为：<br/>"+"水平视角："+panorama.getPov().heading+"<br/>垂直视角："+panorama.getPov().pitch;
-	// 	}
-	// 	else if (e.type=='onposition_changed') {
-	// 		document.getElementById('svInfoText').innerHTML="全景位置点为："+panorama.getPosition().lng+","+panorama.getPosition().lat;
-	// 	}
-	// }
 
 </script>
 
