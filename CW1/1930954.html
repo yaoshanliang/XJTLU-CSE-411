@@ -451,12 +451,10 @@
         "<p style='margin:0;line-height:1.5;font-size:13px;'>111 Ren'ai Road <br><br>Suzhou Dushu Lake Science and Education Innovation District<br> <br>Suzhou Industrial Park</p>" +
         "</div>";
     var infoWindow = new BMap.InfoWindow(sContent);
-    marker.addEventListener("click", function () {
-        map.openInfoWindow(infoWindow, point); //开启信息窗口
-    });
+    map.openInfoWindow(infoWindow, point); //开启信息窗口
 
     var panorama = new BMap.Panorama('panorama');
-    panorama.setPosition(new BMap.Point(120.74568955977745,31.277849662778582)); //根据经纬度坐标展示全景图
+    panorama.setPosition(new BMap.Point(120.74568955977745, 31.277849662778582)); //根据经纬度坐标展示全景图
 
 
 </script>
