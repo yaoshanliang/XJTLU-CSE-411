@@ -4,26 +4,24 @@
 <head>
     <title>Music Festival</title>
     <meta charset="utf-8" />
-    <meta name="description" content="Different kind of fruits." />
+    <meta name="description" content="Music Festival" />
     <link rel="shortcut icon" href="./images/favicon.ico" />
     <script src="./js/data.js"></script>
     <script src="./js/function.js"></script>
     <script type="text/javascript"
         src="http://api.map.baidu.com/api?v=3.0&ak=E4805d16520de693a3fe707cdc962045"></script>
     <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./css/iconfont.css" />
 </head>
 
 <body>
-
     <!-- header section -->
-    <section class="banner" role="banner" id="banner">
-        <header id="header" class="">
-            <div class="header-content clearfix">
+    <section class="banner" id="banner">
+        <header id="header">
+            <div class="header-content">
                 <span class="logo">
                     <a href="1930954.html">XJTLU Music Festival</a>
                 </span>
-                <nav class="navigation open" role="navigation">
+                <nav class="navigation">
                     <ul class="primary-nav">
                         <li><a href="#banner" class="active">Home</a></li>
                         <li><a href="#playlist" class="">Playlist</a></li>
@@ -38,7 +36,7 @@
         <!-- banner text -->
         <div class="container">
             <div class="col-md-10">
-                <div class="banner-text text-center">
+                <div class="banner-text">
                     <h1>Music Festival</h1>
                     <p>Enjoy the live event</p>
                     <div><strong>18:00, 1 May 2020, XJTLU.</strong></div>
@@ -70,77 +68,75 @@
             </div>
 
             <div class="row">
-                <div id="jp_container_2" class="jp-audio" role="application" aria-label="media player">
-                    <div class="jp-type-playlist">
-                        <div class="jp-gui jp-interface">
-                            <div class="music-player">
-                                <!-- audio -->
-                                <audio class="music-player__audio" id="audio-item" src=""></audio>
-                                <div class="music-player__main">
-                                    <div class="music-player__blur" id="song-background"></div>
-                                    <div class="music-player__disc">
-                                        <div class="music-player__image">
-                                            <img width="100%" id="song-icon" src="" alt="">
-                                        </div>
+                <div class="audio">
+                    <div class="type-playlist">
+                        <div class="music-player">
+                            <!-- audio -->
+                            <audio class="music-player-audio" id="audio-item" src=""></audio>
+                            <div class="music-player-main">
+                                <div class="music-player-blur" id="song-background"></div>
+                                <div class="music-player-disc">
+                                    <div class="music-player-image">
+                                        <img width="100%" id="song-icon" src="" alt="">
                                     </div>
-                                    <div class="music-player__controls">
-                                        <div class="music__info">
-                                            <h3 class="music__info--title" id="song-name"></h3>
-                                            <p class="music__info--singer" id="song-singer"></p>
+                                </div>
+                                <div class="music-player-controls">
+                                    <div class="music-info">
+                                        <h3 class="music-info-title" id="song-name"></h3>
+                                        <p class="music-info-singer" id="song-singer"></p>
+                                    </div>
+                                    <div class="player-control">
+                                        <div class="player-control-content">
+                                            <div class="player-control-btns">
+                                                <div class="player-control-btn player-control-btn-next" id="previous"
+                                                    onclick="previous();">
+                                                    <img src="./images/music_previous.png"></div>
+                                                <div class="player-control-btn player-control-btn-play" id="play"
+                                                    onclick="play();">
+                                                    <img src="./images/music_play.png"></div>
+                                                <div class="player-control-btn player-control-btn-play" id="stop"
+                                                    style="display: none;" onclick="pauseplay();">
+                                                    <img src="./images/music_stop.png"></div>
+                                                <div class="player-control-btn player-control-btn-next" id="next"
+                                                    onclick="next();">
+                                                    <img src="./images/music_next.png"></div>
+                                            </div>
+                                            <div class="player-control-volume">
+                                                <div class="control-volume-icon player-control-btn" id="sound"
+                                                    onclick="mute();">
+                                                    <img src="./images/sound.png"></div>
+                                                <div class="control-volume-icon player-control-btn" id="mute"
+                                                    style="display: none;" onclick="sound();">
+                                                    <img src="./images/sound_mute.png"></div>
+                                                <div class="control-volume-progress progress">
+                                                    <div class="back" id="volumeBar"></div>
+                                                </div>
+                                                <div class="control-volume-icon player-control-btn" id="minus"
+                                                    onclick="volumeDown();">
+                                                    <img src="./images/minus.png">
+                                                </div>
+                                                <div class="control-volume-icon player-control-btn" id="add"
+                                                    onclick="volumeUp();"><img src="./images/add.png">
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="player-control">
-                                            <div class="player-control__content">
-                                                <div class="player-control__btns">
-                                                    <div class="player-control__btn player-control__btn--next"
-                                                        id="previous" onclick="previous();">
-                                                        <img src="./images/music_previous.png"></div>
-                                                    <div class="player-control__btn player-control__btn--play" id="play"
-                                                        onclick="play();">
-                                                        <img src="./images/music_play.png"></div>
-                                                    <div class="player-control__btn player-control__btn--play" id="stop"
-                                                        style="display: none;" onclick="pauseplay();">
-                                                        <img src="./images/music_stop.png"></div>
-                                                    <div class="player-control__btn player-control__btn--next" id="next"
-                                                        onclick="next();">
-                                                        <img src="./images/music_next.png"></div>
-                                                </div>
-                                                <div class="player-control__volume">
-                                                    <div class="control__volume--icon player-control__btn" id="sound"
-                                                        onclick="mute();">
-                                                        <img src="./images/sound.png"></div>
-                                                    <div class="control__volume--icon player-control__btn" id="mute"
-                                                        style="display: none;" onclick="sound();">
-                                                        <img src="./images/sound_mute.png"></div>
-                                                    <div class="control__volume--progress progress">
-                                                        <div class="back" id="volumeBar"></div>
-                                                    </div>
-                                                    <div class="control__volume--icon player-control__btn" id="minus"
-                                                        onclick="volumeDown();">
-                                                        <img src="./images/minus.png">
-                                                    </div>
-                                                    <div class="control__volume--icon player-control__btn" id="add"
-                                                        onclick="volumeUp();"><img src="./images/add.png">
-                                                    </div>
-                                                </div>
-                                            </div>
 
-                                            <div class="player-control__content">
-                                                <div class="player__song--progress progress">
-                                                    <div class="back" id="bar"></div>
-                                                </div>
-                                                <div class="player__song--timeProgess nowTime" id="nowTime">0:00</div>
-                                                <div class="player__song--timeProgess totalTime" id="totalTime">0:00
-                                                </div>
+                                        <div class="player-control-content">
+                                            <div class="player-song-progress progress">
+                                                <div class="back" id="bar"></div>
                                             </div>
-
+                                            <div class="player-song-timeProgess nowTime" id="nowTime">0:00</div>
+                                            <div class="player-song-timeProgess totalTime" id="totalTime">0:00
+                                            </div>
                                         </div>
 
                                     </div>
+
                                 </div>
                             </div>
                         </div>
                         <!--play list-->
-                        <div class="jp-playlist" id="songlist">
+                        <div id="songlist">
 
                         </div>
 
@@ -226,18 +222,18 @@
 
     <section id="app">
         <div class="container">
-
             <div class="section-header">
                 <h2 class="wow fadeInDown animated">Map</h2>
-                <p class="wow fadeInDown animated">We are located in 111 Ren'ai Road, Suzhou Dushu Lake Science and Education Innovation District, Suzhou Industrial Park.</p>
+                <p class="wow fadeInDown animated">We are located in 111 Ren'ai Road, Suzhou Dushu Lake Science and
+                    Education Innovation District, Suzhou Industrial Park.</p>
             </div>
             <div id="map"></div>
             <div id="panorama"></div>
             <div id="svInfoText"></div>
         </div>
     </section>
-
 </body>
+
 <footer>
     <div class="container">
         <div class="text-center">
@@ -260,82 +256,10 @@
 
     // Play, pause, volume up and volume down
     let audiop = document.getElementById("audio-item");
-    function play() {
-        audiop.play();
-        document.getElementsByClassName("music-player__image")[0].classList.add("play");
-        document.getElementById("play").style.display = 'none';
-        document.getElementById("stop").style.display = 'block';
-
-        for (let i = 0; i < songs.length; i++) {
-            document.getElementsByClassName("songItem")[i].classList.remove("currentSong");
-
-            if (i == currentSong) {
-                document.getElementById("song-name").innerText = songs[i].name;
-                document.getElementById("song-singer").innerText = songs[i].singer;
-                document.getElementById("song-icon").setAttribute("src", './audio/' + songs[i].image);
-                document.getElementById("song-background").setAttribute("backgroundImage", './audio/' + songs[i].image);
-                document.getElementsByClassName("songItem")[i].classList.add("currentSong");
-
-            }
-        }
-
-    }
-    function pauseplay() {
-        audiop.pause();
-        document.getElementsByClassName("music-player__image")[0].classList.remove("play");
-        document.getElementById("play").style.display = 'block';
-        document.getElementById("stop").style.display = 'none';
-    }
+    
 
     let lastVolume = 0;
-    function mute() {
-        lastVolume = audiop.volume;
-        audiop.volume = 0;
-        document.getElementById("sound").style.display = 'none';
-        document.getElementById("mute").style.display = 'block';
-        document.getElementById("volumeBar").style.width = "0%";
-    }
-    function sound() {
-        audiop.volume = lastVolume;
-        document.getElementById("sound").style.display = 'block';
-        document.getElementById("mute").style.display = 'none';
-        document.getElementById("volumeBar").style.width = parseFloat((lastVolume * 100), 10) + "%";
-    }
-    function volumeUp() {
-        console.log(audiop.volume)
-        if (audiop.volume < 1) {
-            audiop.volume = audiop.volume + 0.1;
-        }
-        document.getElementById("volumeBar").style.width = parseFloat((audiop.volume * 100), 10) + "%";
-    }
-    function volumeDown() {
-        console.log(audiop.volume)
-        if (audiop.volume > 0) {
-            audiop.volume = audiop.volume - 0.1;
-        }
-        document.getElementById("volumeBar").style.width = parseFloat((audiop.volume * 100), 10) + "%";
-    }
-
-    // Next song function
-    function next() {
-        currentSong++;
-        if (currentSong > songs.length - 1) {
-            currentSong = 0;
-        }
-        audiop.setAttribute('src', './audio/' + songs[currentSong].path)
-        play();
-    }
-
-    // Previous song function
-    function previous() {
-        currentSong--;
-        if (currentSong < 0) {
-            currentSong = songs.length - 1;
-        }
-        audiop.setAttribute('src', './audio/' + songs[currentSong].path)
-        play();
-    }
-
+    
     // Calculate the process of this song
     audiop.load();
     audiop.oncanplay = function () {
@@ -343,26 +267,8 @@
     }
 
     audiop.addEventListener('timeupdate', updatePlayBar, false);
-    function updatePlayBar() {
-        let minutes = (audiop.currentTime / 60).toFixed(0);
-        let seconds = (audiop.currentTime % 60).toFixed(0);
-        if (seconds < 10) {
-            seconds = '0' + seconds;
-        }
-        document.getElementById("nowTime").innerText = minutes + ':' + seconds;
-
-        if (!isNaN(audiop.duration)) {
-            minutes = (audiop.duration / 60).toFixed(0);
-            seconds = (audiop.duration % 60).toFixed(0);
-            if (seconds < 10) {
-                seconds = '0' + seconds;
-            }
-            document.getElementById("totalTime").innerText = minutes + ':' + seconds;
-        }
-
-        document.getElementById("bar").style.width = parseFloat(((audiop.currentTime / audiop.duration) * 100), 10) + "%";
-    }
-
+    
+    // Show songs
     let html = '';
     for (let i = 0; i < songs.length; i++) {
         html += '<div class="songItem" id="song-item-' + i + '"  onclick="playSong(' + i + ')">' +
@@ -371,15 +277,7 @@
             '<div class="songSinger">' + songs[i].singer + '</div>' +
             '</div>';
     }
-
     document.getElementById("songlist").innerHTML = html;
-
-    function playSong(id) {
-        console.log(id);
-        currentSong = id;
-        audiop.setAttribute('src', './audio/' + songs[currentSong].path);
-        play();
-    }
 
     // Init the first song
     audiop.setAttribute('src', './audio/' + songs[0].path);
@@ -388,9 +286,7 @@
     document.getElementById("song-icon").setAttribute("src", './audio/' + songs[0].image);
     document.getElementById("song-background").setAttribute("background-image", "url(" + './audio/' + songs[0].image + ")");
     document.getElementsByClassName("songItem")[0].classList.add("currentSong");
-    document.getElementById("volumeBar").style.width = parseFloat((audiop.volume * 100), 10) + "%";
-
-
+    document.getElementById("volumeBar").style.width = parseFloat((audiop.volume * 100), 10) + "%"
 
     let currentImage = 0;
     html = '';
@@ -401,60 +297,34 @@
     }
     document.getElementById("galleryList").innerHTML = html;
 
-    function showImage(id) {
-        currentImage = id;
-        document.getElementById("zoomImage").setAttribute("src", './gallery/' + gallery[id]);
-        document.getElementById("zoom").style.display = 'block';
-    }
-    function closeImage() {
-        document.getElementById("zoomImage").setAttribute("src", '');
-        document.getElementById("zoom").style.display = 'none';
-    }
-    function previousImage() {
-        currentImage--;
-        if (currentImage < 0) {
-            currentImage = gallery.length - 1;
-        }
-        document.getElementById("zoomImage").setAttribute("src", './gallery/' + gallery[currentImage]);
-    }
-
-    function nextImage() {
-        currentImage++;
-        if (currentImage > gallery.length - 1) {
-            currentImage = 0;
-        }
-        document.getElementById("zoomImage").setAttribute("src", './gallery/' + gallery[currentImage]);
-    }
-
-
-    // 百度地图API功能
-    var map = new BMap.Map("map");  // 创建Map实例
-    var point = new BMap.Point(120.746339, 31.279684); // 创建点坐标
+    // Show map
+    var map = new BMap.Map("map");
+    var point = new BMap.Point(120.746339, 31.279684); 
     map.centerAndZoom(point, 17);
-    map.enableScrollWheelZoom();                 //启用滚轮放大
-    //添加地图类型控件
+    map.enableScrollWheelZoom(); 
     map.addControl(new BMap.MapTypeControl({
         mapTypes: [
             BMAP_NORMAL_MAP,
             BMAP_HYBRID_MAP
         ]
     }));
-
     map.addControl(new BMap.NavigationControl());
-    var marker = new BMap.Marker(point);  // 创建标注
-    map.addOverlay(marker);              // 将标注添加到地图中
+    var marker = new BMap.Marker(point); 
+    map.addOverlay(marker);   
     map.centerAndZoom(point, 15);
+
+    // Add infoWindow
     var sContent =
         "<h4 style='margin:0 0 5px 0;padding:0.2em 0'>Xi'an Jiaotong-Liverpool University</h4>" +
         "<img style='float:right;margin:4px' id='imgDemo' src='./images/XJTLU.jpg' width='139' height='104' title='天安门'/>" +
         "<p style='margin:0;line-height:1.5;font-size:13px;'>111 Ren'ai Road <br><br>Suzhou Dushu Lake Science and Education Innovation District<br> <br>Suzhou Industrial Park</p>" +
         "</div>";
     var infoWindow = new BMap.InfoWindow(sContent);
-    map.openInfoWindow(infoWindow, point); //开启信息窗口
+    map.openInfoWindow(infoWindow, point);
 
+    // Show panorama
     var panorama = new BMap.Panorama('panorama');
-    panorama.setPosition(new BMap.Point(120.74568955977745, 31.277849662778582)); //根据经纬度坐标展示全景图
-
+    panorama.setPosition(new BMap.Point(120.74568955977745, 31.277849662778582)); 
 
 </script>
 
