@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.6" method="upgrade">
+	<name>com_jwpagefactory</name>
+	<author>JoomWorker</author>
+	<creationDate>Mar 2020</creationDate>
+	<authorEmail>info@joomla.work</authorEmail>
+	<authorUrl>www.joomla.work</authorUrl>
+	<copyright>Copyright @ 2010 - 2020 JoomWorker. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later</license>
+	<version>1.7.0</version>
+	<description>COM_JWPAGEFACTORY_DESC</description>
+	<scriptfile>script.php</scriptfile>
+
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+	<uninstall>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+	<update>
+		<schemas>
+			<schemapath type="mysql">sql/updates</schemapath>
+		</schemas>
+	</update>
+
+	<administration>
+		<files folder="admin">
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>controller.php</filename>
+			<filename>jwpagefactory.php</filename>
+			<folder>assets</folder>
+			<folder>builder</folder>
+			<folder>controllers</folder>
+			<folder>helpers</folder>
+			<folder>language</folder>
+			<folder>layouts</folder>
+			<folder>models</folder>
+			<folder>sql</folder>
+			<folder>tables</folder>
+			<folder>views</folder>
+		</files>
+
+		<menu>com_jwpagefactory</menu>
+	</administration>
+
+	<files folder="site">
+		<filename>controller.php</filename>
+		<filename>jwpagefactory.php</filename>
+		<filename>router.php</filename>
+		<folder>addons</folder>
+		<folder>assets</folder>
+		<folder>controllers</folder>
+		<folder>helpers</folder>
+		<folder>language</folder>
+		<folder>layouts</folder>
+		<folder>models</folder>
+		<folder>parser</folder>
+		<folder>views</folder>
+	</files>
+
+	<plugins>
+		<plugin name="jwpagefactory" group="content"/>
+		<plugin name="jwpagefactory" group="finder"/>
+		<plugin name="jwpagefactory" group="search"/>
+		<plugin name="jwpagefactory" group="system"/>
+		<plugin name="jwpagefactoryproupdater" group="system"/>
+	</plugins>
+
+	<modules>
+		<module module="mod_jwpagefactory" client="site"/>
+		<module module="mod_jwpagefactory_icons" client="administrator" position="cpanel"/>
+		<module module="mod_jwpagefactory_admin_menu" client="administrator" position="menu" ordering="98"/>
+	</modules>
+
+	<updateservers>
+		<server type="extension" priority="1" name="JW Page Factory">https://pagefactory.joomla.work/updates/com-jw-page-factory-pro.xml</server>
+	</updateservers>
+</extension>

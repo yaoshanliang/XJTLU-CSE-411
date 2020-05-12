@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_JWPAGEFACTORY_PAGE_DEFAULT_TITLE">
+		<message>COM_JWPAGEFACTORY_PAGE_VIEW_DEFAULT_DESC</message>
+	</layout>
+	<fields name="request">
+		<fieldset
+			name="request"
+			addfieldpath="/administrator/components/com_jwpagefactory/models/fields">
+
+			<field
+				name="id"
+				type="modal_page"
+				label="COM_JWPAGEFACTORY_FIELD_SELECT_PAGE_LABEL"
+				required="true"
+				edit="false"
+				clear="false"
+				description="COM_JWPAGEFACTORY_FIELD_SELECT_PAGE_DESC"
+			/>
+		</fieldset>
+	</fields>
+</metadata>

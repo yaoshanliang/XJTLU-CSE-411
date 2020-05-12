@@ -1,0 +1,173 @@
+[
+	{
+		"title": "COM_KOMENTO_DASHBOARD",
+		"icon": "fa-dashboard"
+	},
+	{
+		"access": "komento.manage.settings",
+		"title": "COM_KOMENTO_SETTINGS",
+		"link": "index.php?option=com_komento&view=settings&layout=system",
+		"view": "settings",
+		"icon": "fa-cog",
+		"childs":
+		[
+			{
+				"title": "COM_KOMENTO_SETTINGS_TAB_ANTISPAM",
+				"url": {
+					"layout": "antispam"
+				}
+			}, {
+				"title": "COM_KOMENTO_SETTINGS_TAB_GENERAL",
+				"url": {
+					"layout": "general"
+				}
+			}, {
+				"title": "COM_KOMENTO_INTEGRATIONS",
+				"url": {
+					"layout": "integrations"
+				}
+			}, {
+				"title": "COM_KOMENTO_SETTINGS_TAB_LAYOUT",
+				"url": {
+					"layout": "layout"
+				}
+			}, {
+				"title": "COM_KOMENTO_SETTINGS_TAB_NOTIFICATIONS",
+				"url": {
+					"layout": "notifications"
+				}
+			}, {
+				"title": "COM_KOMENTO_SETTINGS_TAB_USERS",
+				"url": {
+					"layout": "users"
+				}
+			}
+		]
+	},
+	{
+		"access": "komento.manage.themes",
+		"title": "COM_KOMENTO_THEMES",
+		"view": "themes",
+		"icon": "fa-paint-brush",
+		"childs": 
+		[
+			{
+				"title": "COM_KOMENTO_THEMES",
+				"url": {
+					"view": "themes",
+					"layout": ""
+				}
+			},			
+			{
+				"title": "COM_KT_MENU_ITEM_THEMES_CUSTOM_CSS",
+				"url":
+				{
+					"view": "themes",
+					"layout": "custom"
+				},
+				"childs": []
+			}
+		]		 
+	},
+	{
+		"access": "komento.manage.backgrounds",
+		"title": "COM_KT_BACKGROUNDS",
+		"view": "backgrounds",
+		"icon": "fa-barcode"
+	},
+	{
+		"access": "komento.manage.comments",
+		"title": "COM_KOMENTO_COMMENTS",
+		"view": "comments",
+		"icon": "fa-comments-o",
+		"childs":
+		[
+			{
+				"access": "komento.manage.comments",
+				"title"		: "COM_KOMENTO_COMMENTS",
+				"icon"		: "fa-cubes",
+				"url"		:
+				{
+					"layout"	: ""
+				}
+			},
+			{
+				"access": "komento.manage.pending",
+				"title": "COM_KOMENTO_PENDING",
+				"url": {
+					"layout"	: "pending"
+				},
+				"counter": "comments/getTotalPending"
+			},
+			{	"access": "komento.manage.reports",
+				"title": "COM_KOMENTO_REPORTS",
+				"icon": "fa-list-alt",
+				"url": {
+					"layout"	: "reports"
+				},
+				"counter": "comments/getTotalReported"
+			},
+			{	"access": "komento.manage.spamlist",
+				"title": "COM_KOMENTO_SPAMLIST",
+				"icon": "fa-list-alt",
+				"url": {
+					"layout"	: "spamlist"
+				},
+				"counter": "comments/getTotalSpams"
+			}
+		]
+	},
+	{
+		"access": "komento.manage.acl",
+		"title": "COM_KOMENTO_ACL",
+		"view": "acl",
+		"icon": "fa-lock"
+	},
+	{
+		"access": "komento.manage.subscribers",
+		"title": "COM_KOMENTO_SUBSCRIBERS",
+		"view": "subscribers",
+		"icon": "fa-group"
+	},
+	{
+		"access": "komento.manage.downloads",
+		"title": "COM_KT_DOWNLOAD_REQUEST",
+		"view": "downloads",
+		"icon": "fa-download"
+	},
+	{
+		"access": "komento.manage.languages",
+		"title": "COM_KOMENTO_LANGUAGES",
+		"view": "languages",
+		"icon": "fa-puzzle-piece"
+	},
+	{
+		"access": "komento.manage.mailq",
+		"title": "COM_KOMENTO_EMAILS",
+		"view": "mailq",
+		"icon": "fa-envelope-o",
+		"childs":
+		[
+			{
+				"access": "komento.manage.mailq",
+				"title": "COM_KOMENTO_EMAILS_ACTIVITIES",
+				"url": {
+					"layout": ""
+				}
+			},
+			{
+				"access": "komento.manage.mailq",
+				"title": "COM_KOMENTO_EMAILS_EDITOR",
+				"url": {
+					"layout"	: "editor"
+				}
+			}
+		]
+	},
+	{
+		"access": "komento.manage.migrators",
+		"title": "COM_KOMENTO_MIGRATORS",
+		"view": "migrators",
+		"icon": "fa-truck"
+	}
+]

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.6" client="site" method="upgrade">
+	<name>mod_jwpagefactory</name>
+	<author>JoomWorker</author>
+	<creationDate>Jan 2019</creationDate>
+	<authorEmail>info@joomla.work</authorEmail>
+	<authorUrl>www.joomla.work</authorUrl>
+	<copyright>Copyright @ 2010 - 2019 JoomWorker. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later</license>
+	<version>1.2</version>
+	<description>MOD_JWPAGEFACTORY_XML_DESCRIPTION</description>
+	<files>
+		<filename module="mod_jwpagefactory">mod_jwpagefactory.php</filename>
+		<filename>helper.php</filename>
+		<folder>assets</folder>
+		<folder>fields</folder>
+		<folder>language</folder>
+		<folder>tmpl</folder>
+	</files>
+	<config>
+		<fields name="params" addfieldpath="/modules/mod_jwpagefactory/fields">
+			<fieldset name="advanced">
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC"
+				/>
+				<field
+					name="moduleclass_sfx"
+					type="textarea"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"
+					rows="3"
+				/>
+				<field
+					name="cache"
+					type="list"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					description="COM_MODULES_FIELD_CACHING_DESC"
+					default="1"
+				>
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+				<field
+					name="cache_time"
+					type="text"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+					description="COM_MODULES_FIELD_CACHE_TIME_DESC"
+					default="900"
+				/>
+				<field
+					name="cachemode"
+					type="hidden"
+					default="itemid"
+				>
+					<option value="itemid"></option>
+				</field>
+			</fieldset>
+		</fields>
+		<fields name="content" addfieldpath="/modules/mod_jwpagefactory/fields">
+			<fieldset name="basic">
+				<field
+					name="content"
+					type="pagefactory"
+					filter="raw"
+				/>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

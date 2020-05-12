@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.7" client="administrator" method="upgrade">
+	<name>mod_jwpagefactory_icons</name>
+	<author>JoomWorker</author>
+	<creationDate>Jan 2019</creationDate>
+	<authorEmail>info@joomla.work</authorEmail>
+	<authorUrl>www.joomla.work</authorUrl>
+	<copyright>Copyright @ 2010 - 2019 JoomWorker. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later</license>
+	<version>1.0</version>
+	<description>MOD_JWPAGEFACTORY_ICONS_XML_DESCRIPTION</description>
+	<files>
+		<filename module="mod_jwpagefactory_icons">mod_jwpagefactory_icons.php</filename>
+		<folder>language</folder>
+		<folder>tmpl</folder>
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="advanced">
+				<field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>

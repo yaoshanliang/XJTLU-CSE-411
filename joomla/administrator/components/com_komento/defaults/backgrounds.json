@@ -1,0 +1,52 @@
+[
+	{
+		"title" : "Preset 1",
+		"type" : "vertical",
+		"published" : 1,
+		"params" : {
+			"color1" : "#F3E7E8",
+			"color2" : "#E3EEFF",
+			"fontcolor" : "#444444"
+		}
+	},
+	{
+		"title" : "Preset 2",
+		"type" : "vertical",
+		"published" : 1,
+		"params" : {
+			"color1" : "#AEEADF",
+			"color2" : "#F7F8D8",
+			"fontcolor" : "#444444"
+		}
+	},
+	{
+		"title" : "Preset 3",
+		"type" : "vertical",
+		"published" : 1,
+		"params" : {
+			"color1" : "#CE9FFC",
+			"color2" : "#7367F0",
+			"fontcolor" : "#FFFFFF"
+		}
+	},
+	{
+		"title" : "Preset 4",
+		"type" : "vertical",
+		"published" : 1,
+		"params" : {
+			"color1" : "#D3F0F1",
+			"color2" : "#37D8E8",
+			"fontcolor" : "#444444"
+		}
+	},
+	{
+		"title" : "Preset 5",
+		"type" : "vertical",
+		"published" : 1,
+		"params" : {
+			"color1" : "#EC9A8A",
+			"color2" : "#8C47D6",
+			"fontcolor" : "#444444"
+		}
+	}
+]

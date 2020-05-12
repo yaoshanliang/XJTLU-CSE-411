@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.4" type="plugin" group="system" method="upgrade">
+	<name>plg_system_jwpagefactoryproupdater</name>
+	<author>JoomWorker</author>
+	<creationDate>Jan 2019</creationDate>
+	<authorEmail>info@joomla.work</authorEmail>
+	<authorUrl>www.joomla.work</authorUrl>
+	<copyright>Copyright @ 2010 - 2019 JoomWorker. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later</license>
+	<version>1.0</version>
+	<description>PLG_SYSTEM_JWPAGEFACTORYPROUPDATER_DESCRIPTION</description>
+	<files>
+		<filename plugin="jwpagefactoryproupdater">jwpagefactoryproupdater.php</filename>
+		<folder>language</folder>
+	</files>
+</extension>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="file" method="upgrade" version="3.6">
+	<name>页面工厂 - 中文语言包 (zh-CN)</name>
+	<creationDate>Jan 2019</creationDate>
+	<author>JoomWorker</author>
+	<authorEmail>info@joomla.work</authorEmail>
+	<authorUrl>www.joomla.work</authorUrl>
+	<copyright>Copyright @ 2010 - 2019 JoomWorker. All rights reserved.</copyright>
+	<description>JW页面工厂中文语言包</description>
+	<version>1.0</version>
+
+	<scriptfile>script.php</scriptfile>
+
+	<_config>
+		<_title>简体中文 (zh-CN)</_title>
+		<_description>JW页面工厂中文语言包</_description>
+		<_lang_tag>zh-CN</_lang_tag>
+		<_lang_key>chinese</_lang_key>
+	</_config>
+
+	<fileset>
+		<files folder="admin" target="administrator/components/com_jwpagefactory/language/zh-CN/">
+			<file>zh-CN.com_jwpagefactory.ini</file>
+			<file>zh-CN.com_jwpagefactory.sys.ini</file>
+		</files>
+
+		<files folder="admin" target="administrator/modules/mod_jwpagefactory_admin_menu/language/zh-CN/">
+			<file>zh-CN.mod_jwpagefactory_admin_menu.ini</file>
+			<file>zh-CN.mod_jwpagefactory_admin_menu.sys.ini</file>
+		</files>
+
+		<files folder="admin" target="administrator/modules/mod_jwpagefactory_icons/language/zh-CN/">
+			<file>zh-CN.mod_jwpagefactory_icons.ini</file>
+			<file>zh-CN.mod_jwpagefactory_icons.sys.ini</file>
+		</files>
+
+		<files folder="site" target="components/com_jwpagefactory/language/zh-CN/">
+			<file>zh-CN.com_jwpagefactory.ini</file>
+		</files>
+
+		<files folder="site" target="modules/mod_jwpagefactory/language/zh-CN/">
+			<file>zh-CN.mod_jwpagefactory.ini</file>
+			<file>zh-CN.mod_jwpagefactory.sys.ini</file>
+		</files>
+
+		<files folder="plugins" target="plugins/content/jwpagefactory/language/zh-CN/">
+			<file>zh-CN.plg_content_jwpagefactory.ini</file>
+			<file>zh-CN.plg_content_jwpagefactory.sys.ini</file>
+		</files>
+
+		<files folder="plugins" target="plugins/finder/jwpagefactory/language/zh-CN/">
+			<file>zh-CN.plg_finder_jwpagefactory.ini</file>
+			<file>zh-CN.plg_finder_jwpagefactory.sys.ini</file>
+		</files>
+
+		<files folder="plugins" target="plugins/search/jwpagefactory/language/zh-CN/">
+			<file>zh-CN.plg_search_jwpagefactory.ini</file>
+			<file>zh-CN.plg_search_jwpagefactory.sys.ini</file>
+		</files>
+
+		<files folder="plugins" target="plugins/system/jwpagefactory/language/zh-CN/">
+			<file>zh-CN.plg_system_jwpagefactory.ini</file>
+			<file>zh-CN.plg_system_jwpagefactory.sys.ini</file>
+		</files>
+
+		<files folder="plugins" target="plugins/system/jwpagefactoryproupdater/language/zh-CN/">
+			<file>zh-CN.plg_system_jwpagefactoryproupdater.ini</file>
+			<file>zh-CN.plg_system_jwpagefactoryproupdater.sys.ini</file>
+		</files>
+	</fileset>
+</extension>

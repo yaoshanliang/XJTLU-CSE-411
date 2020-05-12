@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.6" type="plugin" group="content" method="upgrade">
+	<name>plg_content_jwpagefactory</name>
+	<author>JoomWorker</author>
+	<creationDate>Jan 2019</creationDate>
+	<authorEmail>info@joomla.work</authorEmail>
+	<authorUrl>www.joomla.work</authorUrl>
+	<copyright>Copyright @ 2010 - 2019 JoomWorker. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later</license>
+	<version>1.0</version>
+	<description>PLG_CONTENT_JWPAGEFACTORY_XML_DESCRIPTION</description>
+
+	<scriptfile>script.php</scriptfile>
+
+	<_config>
+		<_title>Joomla Article</_title>
+		<_description>Plugin to add Page Factory support in Joomla article.</_description>
+		<_component>com_content</_component>
+	</_config>
+
+	<files>
+		<filename plugin="jwpagefactory">jwpagefactory.php</filename>
+		<folder>language</folder>
+	</files>
+</extension>

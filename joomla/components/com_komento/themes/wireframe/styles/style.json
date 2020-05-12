@@ -1,0 +1,14 @@
+{
+	"style": [
+		"generic",
+		"objects",
+		"component",
+		"elements",
+		"blocks",
+		"toolbar",
+		"modules",
+		"states",
+		"trumps",
+		"custom"
+	]
+}
