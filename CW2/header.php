@@ -9,8 +9,10 @@
     <title>Sports Tracker</title>
     <meta name="description" content="Sports Tracker for All Users" />
     <link rel="shortcut icon" href="./images/favicon.ico" />
-    <script src="./js/data.js"></script>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/web.js"></script>
     <script src="./js/function.js"></script>
+    <link rel="stylesheet" href="./css/lib.css" />
     <link rel="stylesheet" href="./css/style.css" />
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
