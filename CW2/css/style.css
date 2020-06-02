@@ -41,6 +41,14 @@
     background: #F2F2F2;
     color: #2D2D2D;
 }
+.radio {
+    width: auto !important;
+    height: 18px !important;
+    min-height: 10px !important;
+}
+.radio-inline {
+    padding-top: 0px !important;
+}
 .forget, .back-login {
     text-align: right;
     padding-top: 18px;

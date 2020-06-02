@@ -10,7 +10,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $name = $_POST['name'];
-    $result = $dbHelper->register($username, $password, $name);
+    $gender = $_POST['gender'];
+
+    $result = $dbHelper->register($username, $password, $name, $gender);
 
     if ($result['code'] == 0) {
         $_SESSION["username"] = $username;
@@ -32,9 +34,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="text" name="username" required="required" value="" placeholder="Username">
                     <input type="password" name="password" required="required" value="" placeholder="Password">
                     <input type="text" name="name" required="required" value="" placeholder="Name">
+                    Gender: <label class="radio-inline" style="padding-left: 30px;"><input type="radio" class="radio" name="gender" value=0 checked>Male</label>
+                    <label class="radio-inline"><input type="radio" class="radio" value=1 name="gender">Female</label>
 
-                    <button type="submit" class="btn btn-primary login">Login</button>
-                    <p class="forget"><a href="./registration.php" class="underline-a">Registration</a></p>
+                    <br/>
+                    <br/>
+                    <button type="submit" class="btn btn-primary login">Register</button>
+                    <p class="forget"><a href="./login.php" class="underline-a">Login</a></p>
                 </form>
             </section>
         </div>

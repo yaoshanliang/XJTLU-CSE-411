@@ -17,7 +17,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $loginInfo = $result['message'];
     }
-    // return;
 }
 ?>
 
