@@ -69,7 +69,7 @@
   margin: 110px 0;
 }
 .content-detail {
-  padding: 0 81px;
+  padding: 0 40px;
   border: 1px solid #E5E5E5;
   background: #fff;
 }
@@ -94,6 +94,27 @@
 }
 th {
   text-align: left;
+}
+
+.bulletion-footer {
+  margin: 32px 0 84px;
+}
+
+a.page-disable {
+  background: #d8d8d8;
+}
+a.page-link {
+  display: inline-block;
+  float: right;
+  width: 85px;
+  line-height: 38px;
+  padding: 0 20px;
+  color: #fff;
+  background: #5E96AA;
+  border-radius: 5px;
+}
+a.previous-page {
+  margin: 0 24px 0 31px;
 }
 
 .pagination > .disabled > a,
@@ -190,7 +211,7 @@ a.underline-a:hover {
 }
 
 .center-page {
-  width: 960px;
+  width: 1000px;
   margin: 0 auto;
 }
 

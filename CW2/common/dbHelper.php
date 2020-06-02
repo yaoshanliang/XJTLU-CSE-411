@@ -68,17 +68,34 @@ class dbHelper
     // Add sports
     public function addSports($sport, $duration, $start_date, $start_time, $distance, $calories, $avg_speed,  $is_public)
     {
-        // var_dump($calories);
-        // var_dump($avg_speed);
         $sql = "insert into `sports`(`user_id`, `sport`, `duration`, `start_date`, `start_time`, `distance`,`calories`, `avg_speed`, `is_public`, `created_at`, `updated_at`) values(?,?,?,?,?,?,?,?,?,?, ?)";
         $sth = $this->dbh->prepare($sql);
         $result = $sth->execute([$_SESSION['id'], $sport, $duration, $start_date, $start_time, $distance, $calories, $avg_speed, $is_public, getNowTime(), getNowTime()]);
         // var_dump($result);exit;
-        print_r($sth->errorInfo());
+        // print_r($sth->errorInfo());
         if ($result) {
             return ['code' => 0, 'data' => $result];
         } else {
             return ['code' => 1, 'message' => 'Add failed'];
+        }
+    }
+
+    // Get my sports
+    public function getMySports($page, $sport, $start_date, $sort, $order)
+    {
+        $skip = ($page - 1) * 10;
+        $sql = "select * from `sports` where `user_id`= ? limit $skip, 10";
+        $sth = $this->dbh->prepare($sql);
+
+        $sth->execute([$_SESSION['id']]);
+        print_r($sth->errorInfo());
+
+        $result = $sth->fetchAll();
+
+        if ($result) {
+            return ['code' => 0, 'data' => $result];
+        } else {
+            return ['code' => 0, 'data' => []];
         }
     }
 }
