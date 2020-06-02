@@ -84,7 +84,13 @@ class dbHelper
     public function getMySports($page, $sport, $start_date, $sort, $order)
     {
         $skip = ($page - 1) * 10;
-        $sql = "select * from `sports` where `user_id`= ? limit $skip, 10";
+        // $sql = "select * from `sports` where `user_id`= ? limit $skip, 10";
+        $sql = "select * from `sports` where `sport` like '%" . $sport . "%' and `start_date` like '%" . $start_date . "%' and `user_id`= ? limit $skip, 10";
+        if ($sort) {
+            $sql = "select * from `sports` where `sport` like '%" . $sport . "%' and `start_date` like '%" . $start_date . "%' and `user_id`= ? order by " . $sort . " " . $order . " limit $skip, 10";
+        }
+        var_dump($sql);
+        
         $sth = $this->dbh->prepare($sql);
 
         $sth->execute([$_SESSION['id']]);

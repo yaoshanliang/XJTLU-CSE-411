@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $page = 1;
     }
 
-    $result = $dbHelper->getMySports($page, $_GET['sport'], $_GET['start_date'], @$_GET['sort'], @$_GET['order']);
+    $result = $dbHelper->getMySports($page, @$_GET['sport'], @$_GET['start_date'], @$_GET['sort'], @$_GET['order']);
     $sports = $result['data'];
 }
 ?>
@@ -59,6 +59,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                         <button type="button" class="btn btn-default" onclick="sort('start_date', 'desc');">Sort By Start Time(DESC)</button>
                     <?php } else { ?>
                         <button type="button" class="btn btn-default" onclick="sort('start_date', 'asc');">Sort By Start Time(ASC)</button>
+                    <?php } ?>
+
+                    <?php if (@$_GET['sort'] == 'avg_speed' && @$_GET['order'] == 'asc') { ?>
+                        <button type="button" class="btn btn-default" onclick="sort('avg_speed', 'desc');">Sort By Average Speed(DESC)</button>
+                    <?php } else { ?>
+                        <button type="button" class="btn btn-default" onclick="sort('avg_speed', 'asc');">Sort By Average Speed(ASC)</button>
                     <?php } ?>
 
                     <?php if (@$_GET['sort'] == 'calories' && @$_GET['order'] == 'asc') { ?>
