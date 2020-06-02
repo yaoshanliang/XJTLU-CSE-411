@@ -25,7 +25,7 @@ class dbHelper
     public function login($username, $password) {
         $password = md5($password);
         // User input is automatically enclosed in quotation marks, so there is no danger of SQL injection attacks.
-        $sql = "select `username`, `name`, `gender` from `users` where `username`= ? and `password` = ?";
+        $sql = "select `id`, `username`, `name`, `gender`, `birthday` from `users` where `username`= ? and `password` = ?";
         $sth = $this->dbh->prepare($sql);
 
         $sth->execute([$username, $password]);
@@ -37,11 +37,29 @@ class dbHelper
         }
     }
 
-    public function register($username, $password) {
-        $password = md5($password);
-        $sql = "insert into `users`(`username`, `password`) values(?,?)";
+    public function updateProfile($id, $username, $name, $gende, $birthday) {
+        $sql = "update `users` set `username` = ?, `name` = ?, `gender` = ?, `birthday` = ?, `updated_at` = ? where `id` = ?";
         $sth = $this->dbh->prepare($sql);
-        $sth = $sth->execute([$username, $password]);
+        $result = $sth->execute([$id, $username, $name, $gende, $birthday, getNowTime()]);
+
+        if ($result) {
+            return ['code' => 0, 'message' => 'Successfully updated', 'data' => $result];
+        } else {
+            return ['code' => 1, 'message' => 'Update failed'];
+        }
+    }
+
+    public function register($username, $password, $name, $gende, $birthday) {
+        $password = md5($password);
+        $sql = "insert into `users`(`username`, `password`, `name`, `gender`, `birthday`, `created_at`, `updated_at`) values(?,?,?,?,?,?,?)";
+        $sth = $this->dbh->prepare($sql);
+        $result = $sth->execute([$username, $password, $name, $gende, $birthday, getNowTime(), getNowTime()]);
+
+        if ($result) {
+            return ['code' => 0, 'data' => $result];
+        } else {
+            return ['code' => 1, 'message' => 'Register failed'];
+        }
     }
 
 }

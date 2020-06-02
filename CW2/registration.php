@@ -11,12 +11,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
     $name = $_POST['name'];
     $gender = $_POST['gender'];
+    $birthday = $_POST['birthday'];
 
-    $result = $dbHelper->register($username, $password, $name, $gender);
+    $result = $dbHelper->register($username, $password, $name, $gender, $birthday);
 
     if ($result['code'] == 0) {
         $_SESSION["username"] = $username;
         $_SESSION["name"] = $name;
+        $_SESSION["gender"] = $gender;
+        $_SESSION["birthday"] = $birthday;
         header("Location: ./1930954.php");
     } else {
         $info = $result['message'];
@@ -36,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="text" name="name" required="required" value="" placeholder="Name">
                     Gender: <label class="radio-inline" style="padding-left: 30px;"><input type="radio" class="radio" name="gender" value=0 checked>Male</label>
                     <label class="radio-inline"><input type="radio" class="radio" value=1 name="gender">Female</label>
-
+                    Birthday: <input type="date" class="date" name="birthday" required="required" value="" placeholder="Name">
                     <br/>
                     <br/>
                     <button type="submit" class="btn btn-primary login">Register</button>

@@ -17,7 +17,7 @@
 
         <div class="down-menus">
             <div class="down-menus-main">
-                <?php if ($_SESSION['name']) { ?>
+                <?php if (isset($_SESSION['name'])) { ?>
                     <a href="javascript:void(0)" class="user-name">
                         <?php
                         echo $_SESSION['name'];
@@ -29,12 +29,12 @@
 
                 <i class="down-up"></i>
             </div>
-            <!-- @if(auth('web')->user()) -->
+            <?php if ($_SESSION['name']) { ?>
             <ol class="down-menus-li">
-                <li><a href="./profile">Profile</a></li>
-                <li><a href="./logout">Logout</a></li>
+                <li><a href="./profile.php">Profile</a></li>
+                <li><a href="./logout.php">Logout</a></li>
             </ol>
-            <!-- @endif -->
+            <?php } ?>
         </div>
         <div class="clearfix"></div>
     </nav>

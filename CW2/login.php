@@ -12,7 +12,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $dbHelper->login($username, $password);
     if ($result['code'] == 0) {
         $_SESSION["username"] = $username;
+        $_SESSION["id"] = $result['data']['id'];
         $_SESSION["name"] = $result['data']['name'];
+        $_SESSION["gender"] = $result['data']['gender'];
+        $_SESSION["birthday"] = $result['data']['birthday'];
         header("Location: ./1930954.php");
     } else {
         $loginInfo = $result['message'];
