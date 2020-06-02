@@ -4,20 +4,21 @@ include_once('function.php');
 ?>
 
 <?php
-$loginInfo = '';
+$info = '';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $result = $dbHelper->login($username, $password);
+    $name = $_POST['name'];
+    $result = $dbHelper->register($username, $password, $name);
+
     if ($result['code'] == 0) {
         $_SESSION["username"] = $username;
-        $_SESSION["name"] = $result['data']['name'];
+        $_SESSION["name"] = $name;
         header("Location: ./1930954.php");
     } else {
-        $loginInfo = $result['message'];
+        $info = $result['message'];
     }
-    // return;
 }
 ?>
 
@@ -25,11 +26,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="center-page">
         <div class="login-page">
             <section class="login-block">
-                <p class="header">Login</p>
-                <p id="loginInfo"><?php echo $loginInfo; ?> </p>
+                <p class="header">Registration</p>
+                <p id="loginInfo"><?php echo $info; ?> </p>
                 <form class="form-horizontal" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                     <input type="text" name="username" required="required" value="" placeholder="Username">
                     <input type="password" name="password" required="required" value="" placeholder="Password">
+                    <input type="text" name="name" required="required" value="" placeholder="Name">
+
                     <button type="submit" class="btn btn-primary login">Login</button>
                     <p class="forget"><a href="./registration.php" class="underline-a">Registration</a></p>
                 </form>

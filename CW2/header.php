@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+ini_set('display_errors', 1);
+include_once('./common/dbHelper.php');
+$dbHelper = new dbHelper();
+?>
 <!DOCTYPE html>
 <html lang="en">
 

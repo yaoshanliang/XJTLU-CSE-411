@@ -3,7 +3,7 @@
 }
 .login-page {
     width: 100%;
-    margin: 87px 0;
+    margin: 110px 0;
 }
 
 .login-block {
@@ -99,8 +99,8 @@ div.dataTables_wrapper {
 html,body {
     width: 100%;
     min-width: 960px;
-    background: #f2f2f2 url(../images/banner.jpg) center 57px no-repeat;
-    background-size: 100% 200px;
+    background: #f2f2f2 url(../images/banner.png) center 57px no-repeat;
+    background-size: 100% 100px;
 }
 #page-wrapper {
     width: 100%;

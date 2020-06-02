@@ -17,25 +17,22 @@
 
         <div class="down-menus">
             <div class="down-menus-main">
-                <!-- @if(auth('web')->user()) -->
+                <?php if ($_SESSION['name']) { ?>
                     <a href="javascript:void(0)" class="user-name">
                         <?php
-                            // $name = auth('web')->user()->name;
-                            // if(mb_strlen($name) > 4) {
-                            //     $name = mb_substr($name, 0, 4).'...';
-                            // }
-                            // echo $name;
+                        echo $_SESSION['name'];
                         ?>
-                        </a>
-                <!-- @else -->
-                    <a href="{{ url('web/auth/login') }}" class="user-name">Login</a>
-                <!-- @endif -->
+                    </a>
+                <?php } else { ?>
+                    <a href="./login.php" class="user-name">Login</a>
+                <?php } ?>
+
                 <i class="down-up"></i>
             </div>
             <!-- @if(auth('web')->user()) -->
             <ol class="down-menus-li">
-                <li><a href="{{ url('web/auth/password') }}">修改密码</a></li>
-                <li><a href="{{ url('web/auth/logout') }}">退出系统</a></li>
+                <li><a href="./profile">Profile</a></li>
+                <li><a href="./logout">Logout</a></li>
             </ol>
             <!-- @endif -->
         </div>

@@ -1,25 +1,47 @@
 <?php
 
-Class dbHelper {
+class dbHelper
+{
+    // Database info
+    private $host = 'iat.net.cn';
+    private $dbName = 'sports';
+    private $user = 'sports';
+    private $pass = 'sports';
+    private $dbh = null;
 
-    public function __construct() {
-        
+    public function __construct()
+    {
+        $dsn = "mysql:host=$this->host;dbname=$this->dbName";
+        date_default_timezone_set('Asia/Shanghai');
+        $this->dbh = new PDO($dsn, $this->user, $this->pass);
+        $this->dbh->query("set names utf8");
     }
-    // $dbms='mysql';
-    // $host='iat.net.cn';
-    // $dbName='sports';
-    // $user='sports';
-    // $pass='sports';
-    // $dsn="$dbms:host=$host;dbname=$dbName";
-    // date_default_timezone_set('Asia/Shanghai');
+
+    public function __destruct()
+    {
+        $this->dbh = null;
+    }
+
+    public function login($username, $password) {
+        $password = md5($password);
+        // User input is automatically enclosed in quotation marks, so there is no danger of SQL injection attacks.
+        $sql = "select `username`, `name`, `gender` from `users` where `username`= ? and `password` = ?";
+        $sth = $this->dbh->prepare($sql);
+
+        $sth->execute([$username, $password]);
+        $result = $sth->fetch();
+        if ($result) {
+            return ['code' => 0, 'data' => $result];
+        } else {
+            return ['code' => 1, 'message' => 'Username and password does not match'];
+        }
+    }
+
+    public function register($username, $password) {
+        $password = md5($password);
+        $sql = "insert into `users`(`username`, `password`) values(?,?)";
+        $sth = $this->dbh->prepare($sql);
+        $sth = $sth->execute([$username, $password]);
+    }
+
 }
-
-
-
-$dbh = new PDO($dsn, $user, $pass);
-$dbh->query("set names utf8");
-$sql = "insert into `kyj_videos` (`id`, `uid`, `title`, `thumb`, `href`, `likes`, `views`, `comments`, `size`, `steps`, `shares`, `datetime`, `lat`, `lng`, `city`, `add_time`, `update_time`) values (?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-$sth = $dbh->prepare($sql);
-
-$sql2 = "update `kyj_videos` set `uid` = ?, `title` = ?, `thumb` = ?, `href` = ?, `likes` = ?, `views` = ?, `comments` = ?, `size` = ?, `steps` = ?, `shares` = ?, `datetime` = ?, `lat` = ?, `lng` = ?, `city` = ?, `update_time` = ? where `id` = ?";
-$sth2 = $dbh->prepare($sql2);
