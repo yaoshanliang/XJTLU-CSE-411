@@ -19,7 +19,6 @@ $dbHelper = new dbHelper();
     <link rel="shortcut icon" href="./images/favicon.ico" />
     <script src="./js/jquery.js"></script>
     <script src="./js/web.js"></script>
-    <script src="./js/function.js"></script>
     <link rel="stylesheet" href="./css/lib.css" />
     <link rel="stylesheet" href="./css/style.css" />
 

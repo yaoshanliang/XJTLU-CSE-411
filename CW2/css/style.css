@@ -60,6 +60,41 @@
   text-align: right;
   padding-top: 18px;
 }
+.center-page {
+  width: 960px;
+  margin: 0 auto;
+}
+.page-common {
+  width: 100%;
+  margin: 110px 0;
+}
+.content-detail {
+  padding: 0 81px;
+  border: 1px solid #E5E5E5;
+  background: #fff;
+}
+.bulletion-header {
+  padding: 52px 0 48px 0;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #2D2D2D;
+}
+.common-lists-style {
+  width: 100%;
+  font-size: 14px;
+}
+.common-lists-style tr {
+  height: 38px;
+  line-height: 38px;
+  border-bottom: 1px dotted #EFEFEF;
+}
+.common-lists-style th {
+  color: #895F1B;
+}
+th {
+  text-align: left;
+}
 
 .pagination > .disabled > a,
 .pagination > .disabled > a:focus,

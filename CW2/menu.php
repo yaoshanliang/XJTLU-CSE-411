@@ -8,10 +8,10 @@
         </div>
 
         <ul class="nav-menus">
-            <li><a href="./1930954.php">Home</a></li>
-            <li><a href="">Course</a></li>
-            <li><a href="">Exam</a></li>
-            <li><a href="">Personal</a></li>
+            <li><a href="./1930954.php">Public</a></li>
+            <li><a href="./sports.php">Sports</a></li>
+            <li><a href="./statistics.php">Statistics</a></li>
+            <li><a href="./message.php">Message</a></li>
         </ul>
 
 
