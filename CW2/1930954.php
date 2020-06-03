@@ -21,9 +21,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 <div id="page-wrapper">
     <div class="center-page">
         <div class="page-common course-page">
-            <div class="bulletin-content">
+            <div class="content">
                 <section class="content-detail">
-                    <p class="bulletion-header">Public Sports</p>
+                    <p class="header">Public Sports</p>
                     <input type="text" class="form-control" style="width: 150px; display:inline-block;" id="search_sports" placeholder="Sport Type" value="<?php echo @$_GET['sport']; ?>">
                     <input type="date" class="form-control" style="width: 150px; display:inline-block;" id="search_start_date" placeholder="Start Time" value="<?php echo @$_GET['start_date']; ?>">
                     <button type="button" class="btn btn-default" onclick="search();">Search</button>
@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                     <table class="common-lists-style course-lists">
                         <tr>
                             <th>ID</th>
-                            <th>Name</th>
+                            <th>User</th>
                             <th>Sport</th>
                             <th>Duration</th>
                             <th>Distance</th>
@@ -86,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                             </tr>
                         <?php } ?>
                     </table>
-                    <div class="bulletion-footer">
+                    <div class="footer">
                         <a href="javascript:void(0)" class="page-link next-page" onclick="nextPage();">下一页</a>
                         <a href="javascript:void(0)" class="page-link previous-page" onclick="previousPage();">上一页</a>
                     </div>

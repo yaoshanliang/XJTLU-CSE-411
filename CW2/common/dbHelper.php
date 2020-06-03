@@ -117,7 +117,7 @@ class dbHelper
         if ($sort) {
             $sql = "select * from `sports` where `sport` like '%" . $sport . "%' and `start_date` like '%" . $start_date . "%' and `user_id`= ? order by " . $sort . " " . $order . " limit $skip, 10";
         }
-        
+
         $sth = $this->dbh->prepare($sql);
 
         $sth->execute([$_SESSION['id']]);
@@ -141,7 +141,7 @@ class dbHelper
         if ($sort) {
             $sql = "select * from `sports` join `users` on sports.user_id = users.id where `is_public` = 1 and `sport` like '%" . $sport . "%' and `start_date` like '%" . $start_date . "%' order by " . $sort . " " . $order . " limit $skip, 10";
         }
-        
+
         $sth = $this->dbh->prepare($sql);
 
         $sth->execute();
@@ -154,5 +154,47 @@ class dbHelper
         } else {
             return ['code' => 0, 'data' => []];
         }
+    }
+
+    // Get my statistics
+    public function getMyStatistics()
+    {
+        $sql = "select * from `sports` where `user_id` = ?";
+
+        $sth = $this->dbh->prepare($sql);
+
+        $sth->execute([$_SESSION['id']]);
+        print_r($sth->errorInfo());
+
+        $result = $sth->fetchAll();
+        $calories = 0;
+        $distance = 0;
+        $avg_speed = 0;
+        $public = 0;
+        $total = count($result);
+        foreach ($result as $v) {
+            $calories += $v['calories'];
+            $distance += $v['distance'];
+            $avg_speed += $v['avg_speed'];
+            if ($v['is_public'] == 1) {
+                $public++;
+            }
+        }
+        if ($total) {
+            $avg_speed = round($avg_speed / $total, 2);
+        }
+
+        $sql = "select `sport`,count(`sport`) as counts from sports group by `sport` order by counts desc where `user_id` = ?";
+        $sth = $this->dbh->prepare($sql);
+
+        $sth->execute([$_SESSION['id']]);
+        $result = $sth->fetch();
+        $sport = '';
+        if ($result) {
+            $sport = $result['sport'];
+        }
+
+
+        return ['code' => 0, 'data' => ['calories' => $calories, 'distance' => $distance, 'avg_speed' => $avg_speed, 'total' => $total, 'public' => $public, 'sport' => $sport]];
     }
 }

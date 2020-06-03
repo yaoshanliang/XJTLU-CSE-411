@@ -73,7 +73,7 @@
   border: 1px solid #E5E5E5;
   background: #fff;
 }
-.bulletion-header {
+.header {
   padding: 52px 0 48px 0;
   text-align: center;
   font-size: 18px;
@@ -96,15 +96,15 @@ th {
   text-align: left;
 }
 
-.bulletion-footer {
+.footer {
   margin: 32px 0 84px;
 }
 
 a.page-disable {
   background: #d8d8d8;
 }
+
 a.page-link {
-  display: inline-block;
   float: right;
   width: 85px;
   line-height: 38px;
@@ -113,8 +113,20 @@ a.page-link {
   background: #5E96AA;
   border-radius: 5px;
 }
+  
 a.previous-page {
   margin: 0 24px 0 31px;
+}
+.statistics-item {
+  display: inline-flex;
+  width: 100%;
+  padding: 10px;
+}
+
+.statistics-item .title{
+  color: #895F1B;
+  font-weight: bold;
+  padding-right: 10px;
 }
 
 .pagination > .disabled > a,
@@ -144,9 +156,6 @@ a.previous-page {
   color: #fff !important;
   cursor: default !important;
   z-index: 3 !important;
-}
-.paging_full_numbers {
-  width: 100%;
 }
 
 .col-lg-12 {
