@@ -29,7 +29,7 @@
 
                 <i class="down-up"></i>
             </div>
-            <?php if ($_SESSION['name']) { ?>
+            <?php if (isset($_SESSION['name'])) { ?>
             <ol class="down-menus-li">
                 <li><a href="./profile.php">Profile</a></li>
                 <li><a href="./logout.php">Logout</a></li>

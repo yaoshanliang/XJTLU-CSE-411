@@ -128,7 +128,25 @@ a.previous-page {
   font-weight: bold;
   padding-right: 10px;
 }
-
+.message-item {
+  font-size: 14px;
+}
+.message-item .right {
+  float: right;
+}
+.message-text {
+  height: 20px;
+  background-color: #ddd;
+  margin-top: 10px;
+  padding: 0px 3px 0 3px;
+}
+.message-time {
+  height: 20px;
+  background-color: #fff;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
 .pagination > .disabled > a,
 .pagination > .disabled > a:focus,
 .pagination > .disabled > a:hover,

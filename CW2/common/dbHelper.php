@@ -217,4 +217,53 @@ class dbHelper
         }
     }
 
+    // Get user
+    public function getUser($id)
+    {
+        $sql = "select * from `users` where `id` = ?";
+
+        $sth = $this->dbh->prepare($sql);
+
+        $sth->execute([$id]);
+
+        $result = $sth->fetch();
+        if ($result) {
+            return ['code' => 0, 'data' => $result];
+        } else {
+            return ['code' => 0, 'data' => []];
+        }
+    }
+
+    // Get messages
+    public function getMessages($id)
+    {
+        $sql = "select messages.*, users.name from `messages` join `users` on messages.to_user_id = users.id where (`to_user_id` = ? and `from_user_id` = ?) or (`to_user_id` = ? and `from_user_id` = ?)";
+
+        $sth = $this->dbh->prepare($sql);
+
+        $sth->execute([$id, $_SESSION['id'], $_SESSION['id'], $id]);
+
+        $result = $sth->fetchAll();
+        if ($result) {
+            return ['code' => 0, 'data' => $result];
+        } else {
+            return ['code' => 0, 'data' => []];
+        }
+    }
+
+    // Send messages
+    public function sendMessage($id, $content)
+    {
+        $sql = "insert into `messages`(`from_user_id`, `to_user_id`, `content`,  `created_at`, `updated_at`) values(?,?,?,?, ?)";
+        $sth = $this->dbh->prepare($sql);
+        $result = $sth->execute([$_SESSION['id'], $id, $content, getNowTime(), getNowTime()]);
+        // var_dump($result);exit;
+        // print_r($sth->errorInfo());
+        if ($result) {
+            return ['code' => 0, 'data' => $result];
+        } else {
+            return ['code' => 1, 'message' => 'Send failed'];
+        }
+    }
+
 }
