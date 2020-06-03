@@ -27,8 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="page-common course-page">
             <div class="content">
                 <section class="content-detail" style="height: 550px;">
-                    <p class="header">Messages with <?php echo $user['name'];?></p>
-                    <div class="col-md-12" style="height: 300px; overflow-y:scroll">
+                    <p class="header">Messages with <?php echo $user['name']; ?></p>
+                    <div class="col-md-12" id="chat-window" style="height: 300px; overflow-y:scroll">
                         <?php foreach ($data as $v) {
                             if ($v['from_user_id'] == $_SESSION['id']) { ?>
                                 <div class="message-item right" style="float: right;width: 100%">
@@ -49,7 +49,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="col-md-12" style="padding-top: 50px;">
                             <div class="col-md-1">
                             </div>
-
                             <div class="col-md-8">
                                 <textarea style="width: 400px; height: 50px;" name="content" required="required"></textarea>
                             </div>
@@ -66,6 +65,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </div>
 
 <script>
+    // Always scroll to bottom
+    var div = document.getElementById('chat-window');
+    div.scrollTop = div.scrollHeight;
+
     function search() {
         sport = $('#search_sports').val();
         start_date = $('#search_start_date').val();
