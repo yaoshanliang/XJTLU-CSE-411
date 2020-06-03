@@ -11,7 +11,7 @@ $(function () {
   if (url.indexOf("/statistics.php") >= 0) {
     li.eq(2).find("a").addClass("current");
   }
-  if (url.indexOf("/message") >= 0) {
+  if (url.indexOf("/user") >= 0) {
     li.eq(3).find("a").addClass("current");
   }
 });
