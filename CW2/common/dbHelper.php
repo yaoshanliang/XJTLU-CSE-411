@@ -38,11 +38,13 @@ class dbHelper
         }
     }
 
-    public function updateProfile($id, $username, $name, $email, $gende, $birthday, $profile)
+    public function updateProfile( $username, $name, $email, $gende, $birthday, $profile)
     {
+        var_dump($profile);
         $sql = "update `users` set `username` = ?, `name` = ?, `email` = ?, `gender` = ?, `birthday` = ?, `profile` = ?, `updated_at` = ? where `id` = ?";
         $sth = $this->dbh->prepare($sql);
-        $result = $sth->execute([$id, $username, $name, $email, $gende, $birthday, $profile, getNowTime()]);
+        $result = $sth->execute([$username, $name, $email, $gende, $birthday, $profile, getNowTime(), $_SESSION['id']]);
+        print_r($sth->errorInfo());
 
         if ($result) {
             return ['code' => 0, 'message' => 'Successfully updated', 'data' => $result];
@@ -113,7 +115,7 @@ class dbHelper
     {
         $skip = ($page - 1) * 10;
         // $sql = "select * from `sports` where `user_id`= ? limit $skip, 10";
-        $sql = "select * from `sports` where `sport` like '%" . $sport . "%' and `start_date` like '%" . $start_date . "%' and `user_id`= ? limit $skip, 10";
+        $sql = "select * from `sports` where `sport` like '%" . $sport . "%' and `start_date` like '%" . $start_date . "%' and `user_id`= ? order by id desc limit $skip, 10";
         if ($sort) {
             $sql = "select * from `sports` where `sport` like '%" . $sport . "%' and `start_date` like '%" . $start_date . "%' and `user_id`= ? order by " . $sort . " " . $order . " limit $skip, 10";
         }
@@ -137,9 +139,9 @@ class dbHelper
     {
         $skip = ($page - 1) * 10;
         // $sql = "select * from `sports` where `user_id`= ? limit $skip, 10";
-        $sql = "select * from `sports` join `users` on sports.user_id = users.id where `is_public` = 1 and `sport` like '%" . $sport . "%' and `start_date` like '%" . $start_date . "%'   limit $skip, 10";
+        $sql = "select sports.*, users.name from `sports` join `users` on sports.user_id = users.id where `is_public` = 1 and `sport` like '%" . $sport . "%' and `start_date` like '%" . $start_date . "%'   order by id desc limit $skip, 10";
         if ($sort) {
-            $sql = "select * from `sports` join `users` on sports.user_id = users.id where `is_public` = 1 and `sport` like '%" . $sport . "%' and `start_date` like '%" . $start_date . "%' order by " . $sort . " " . $order . " limit $skip, 10";
+            $sql = "select sports.*, users.name from `sports` join `users` on sports.user_id = users.id where `is_public` = 1 and `sport` like '%" . $sport . "%' and `start_date` like '%" . $start_date . "%' order by " . $sort . " " . $order . " limit $skip, 10";
         }
 
         $sth = $this->dbh->prepare($sql);

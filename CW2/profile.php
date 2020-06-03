@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $profile = $_POST['profile'];
     $email = $_POST['email'];
 
-    $result = $dbHelper->updateProfile($_SESSION['id'], $username, $name, $email, $gender, $birthday, $profile);
+    $result = $dbHelper->updateProfile($username, $name, $email, $gender, $birthday, $profile);
     $info = $result['message'];
     if ($result['code'] == 0) {
         $_SESSION["username"] = $username;

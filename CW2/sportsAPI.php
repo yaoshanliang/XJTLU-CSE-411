@@ -7,7 +7,7 @@ include_once('./common/dbHelper.php');
 $dbHelper = new dbHelper();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if ($_POST['is_public'] == true) {
+    if ($_POST['is_public'] == 'true') {
         $is_public = 1;
     } else {
         $is_public = 0;

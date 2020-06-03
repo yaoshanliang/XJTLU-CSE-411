@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                     <input type="text" class="form-control" style="width: 150px; display:inline-block;" id="username" placeholder="Username" value="<?php echo @$_GET['username']; ?>">
                     <button type="button" class="btn btn-default" onclick="search();">Search</button>
                     <button type="button" class="btn btn-default" onclick="reset();">Reset</button><br /><br />
-                    
+
                     <input type="hidden" id="page" value="<?php echo $page; ?>">
 
                     <table class="common-lists-style course-lists">
@@ -37,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                             <th>Name</th>
                             <th>Username</th>
                             <th>Gender</th>
+                            <th>Profile Text</th>
                             <th>Operation</th>
                         </tr>
                         <?php foreach ($sports as $v) { ?>
@@ -46,6 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                                 <td><?php echo $v['username']; ?></td>
                                 <td><?php if ($v['gender'] == 0) echo 'Male';
                                     else echo 'Female'; ?></td>
+                                <td><?php echo $v['profile']; ?></td>
                                 <td>
                                     <a onclick="chat(<?php echo $v['id']; ?>)">Chat</a>
 
@@ -64,7 +66,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 </div>
 
 <script>
-
     function search() {
         name = $('#name').val();
         username = $('#username').val();
