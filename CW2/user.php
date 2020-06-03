@@ -5,6 +5,9 @@ include_once('function.php');
 
 <?php
 $info = '';
+if (!isset($_SESSION['id'])) {
+    header("Location: ./login.php");
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if (isset($_GET['page'])) {

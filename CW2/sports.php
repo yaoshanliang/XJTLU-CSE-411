@@ -5,7 +5,9 @@ include_once('function.php');
 
 <?php
 $info = '';
-
+if (!isset($_SESSION['id'])) {
+    header("Location: ./login.php");
+}
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if (isset($_GET['page'])) {
         $page = $_GET['page'];
@@ -206,7 +208,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 <h5 class="modal-title">Are you sure?</h5>
                 <input type="hidden" id="delete_id" value="">
             </div>
-            
+
             <div class="modal-footer">
                 <div class="form-group">
                     <div class="col-md-5 col-md-offset-1">
@@ -254,9 +256,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
         $("#add_modal").modal('show');
     }
+
     function deletes(id) {
         $('#delete_id').val(id);
-       
+
         $("#delete_modal").modal('show');
     }
 

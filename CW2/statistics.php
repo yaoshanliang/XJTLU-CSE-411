@@ -4,9 +4,11 @@ include_once('function.php');
 ?>
 
 <?php
+if (!isset($_SESSION['id'])) {
+    header("Location: ./login.php");
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-
     $result = $dbHelper->getMyStatistics();
     $data = $result['data'];
 }
