@@ -5,21 +5,7 @@ include_once('function.php');
 
 <?php
 $info = '';
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if ($_POST['is_public'] == true) {
-        $is_public = 1;
-    } else {
-        $is_public = 0;
-    }
 
-    $result = $dbHelper->addSports($_POST['sports'], $_POST['duration'], $_POST['start_date'], $_POST['start_time'], $_POST['distance'], $_POST['calories'], $_POST['avg_speed'], $is_public);
-
-    if ($result['code'] == 0) {
-        header("Location: ./sports.php");
-    } else {
-        $info = $result['message'];
-    }
-}
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if (isset($_GET['page'])) {
         $page = $_GET['page'];
@@ -38,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             <div class="bulletin-content">
                 <section class="content-detail">
                     <p class="bulletion-header">My Sports</p>
-                    <button type="button" class="btn btn-primary" onclick="return add();">Add New Sports</button>
+                    <button type="button" class="btn btn-primary" onclick="return add();">Add New Sport</button>
                     <input type="text" class="form-control" style="width: 150px; display:inline-block;" id="search_sports" placeholder="Sport Type" value="<?php echo @$_GET['sport']; ?>">
                     <input type="date" class="form-control" style="width: 150px; display:inline-block;" id="search_start_date" placeholder="Start Time" value="<?php echo @$_GET['start_date']; ?>">
                     <button type="button" class="btn btn-default" onclick="search();">Search</button>
@@ -98,8 +84,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                                 <td><?php if ($v['is_public'] == 1) echo 'Public';
                                     else echo 'Private'; ?></td>
                                 <td>
-                                    <a th:href="@{/web/course/} + ${course.id} ">Edit</a>
-                                    <a th:href="@{/web/course/} + ${course.id} ">Delete</a>
+                                    <a onclick="edit(<?php echo $v['id'] . ',\'' . $v['sport'] . '\', \'' .  $v['duration'] . '\',\'' . $v['distance'] . '\',\'' . $v['start_date'] . '\',\'' . $v['start_time'] . '\',\'' . $v['avg_speed'] . '\',\'' . $v['calories'] . '\',' . $v['is_public'] ?>)">Edit</a>
+                                    <a onclick="deletes(<?php echo $v['id']; ?>)">Delete</a>
 
                                 </td>
                             </tr>
@@ -119,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h5 class="modal-title" id="modal_title">Add New Sports</h5>
+                <h5 class="modal-title" id="modal_title">Add New Sport</h5>
                 <input type="hidden" id="id" value="">
             </div>
             <div class="modal-body">
@@ -201,10 +187,34 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             <div class="modal-footer">
                 <div class="form-group">
                     <div class="col-md-5 col-md-offset-1">
-                        <button type="button" class="btn btn-primary btn-block" onclick="return confirm();">确认</button>
+                        <button type="button" class="btn btn-primary btn-block" onclick="return confirm();">Confirm</button>
                     </div>
                     <div class="col-md-5 col-md-offset-">
-                        <button type="button" class="btn btn-default btn-block" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<div class="modal fade" id="delete_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:300px; margin-top:40px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h5 class="modal-title">Are you sure?</h5>
+                <input type="hidden" id="delete_id" value="">
+            </div>
+            
+            <div class="modal-footer">
+                <div class="form-group">
+                    <div class="col-md-5 col-md-offset-1">
+                        <button type="button" class="btn btn-primary btn-block" onclick="return confirmDelete();">Confirm</button>
+                    </div>
+                    <div class="col-md-5 col-md-offset-">
+                        <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Cancel</button>
                     </div>
                 </div>
             </div>
@@ -215,11 +225,45 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 </div>
 <script>
     function add() {
+        $('#id').val(0);
+        $('#sports').val('');
+        $('#duration').val('');
+        $('#distance').val('');
+        $('#start_date').val('');
+        $('#start_time').val('');
+        $('#avg_speed').val('');
+        $('#calories').val('');
         $("#add_modal").modal('show');
+    }
+
+    function edit(id, sport, duration, distance, start_date, start_time, avg_speed, calories, is_public) {
+        $('#id').val(id);
+        $('#sports').val(sport);
+        $('#duration').val(duration);
+        $('#distance').val(distance);
+        $('#start_date').val(start_date);
+        $('#start_time').val(start_time);
+        $('#avg_speed').val(avg_speed);
+        $('#calories').val(calories);
+        if (is_public) {
+            $('#is_public').prop("checked", true);
+        } else {
+            $('#is_public').prop("checked", false);
+        }
+
+        $('#modal_title').text('Edit Current Sport');
+
+        $("#add_modal").modal('show');
+    }
+    function deletes(id) {
+        $('#delete_id').val(id);
+       
+        $("#delete_modal").modal('show');
     }
 
     function confirm() {
         let data = {
+            id: $('#id').val(),
             sports: $('#sports').val(),
             duration: $('#duration').val(),
             start_date: $('#start_date').val(),
@@ -230,7 +274,21 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             is_public: $('#is_public').is(':checked')
         };
 
-        ajax('./sports.php', 'POST', data, function() {
+        ajax('./sportsAPI.php', 'POST', data, function(data) {
+            console.log(data);
+            window.location.href = './sports.php';
+        }, function(data) {
+            $('#info').text(data['message']);
+        })
+    }
+
+    function confirmDelete() {
+        let data = {
+            id: $('#delete_id').val(),
+        };
+
+        ajax('./sportsAPI.php', 'DELETE', data, function(data) {
+            console.log(data);
             window.location.href = './sports.php';
         }, function(data) {
             $('#info').text(data['message']);

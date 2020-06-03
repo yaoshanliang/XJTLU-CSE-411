@@ -80,6 +80,34 @@ class dbHelper
         }
     }
 
+    // Edit sports
+    public function editSports($id, $sport, $duration, $start_date, $start_time, $distance, $calories, $avg_speed,  $is_public)
+    {
+        $sql = "update `sports` set `sport` = ?, `duration` = ?, `start_date` = ?, `start_time` = ?, `distance` = ?,`calories` = ?, `avg_speed` = ?, `is_public` = ?, `updated_at` = ? where `id` = ?";
+        $sth = $this->dbh->prepare($sql);
+        $result = $sth->execute([$sport, $duration, $start_date, $start_time, $distance, $calories, $avg_speed, $is_public, getNowTime(), $id]);
+        // print_r($sth->errorInfo());
+        if ($result) {
+            return ['code' => 0, 'data' => $result];
+        } else {
+            return ['code' => 1, 'message' => 'Edit failed'];
+        }
+    }
+
+    // Delete sports
+    public function deleteSports($id)
+    {
+        $sql = "delete from `sports` where `id` = ? and `user_id` = ?";
+        $sth = $this->dbh->prepare($sql);
+        $result = $sth->execute([$id, $_SESSION['id']]);
+        // print_r($sth->errorInfo());
+        if ($result) {
+            return ['code' => 0, 'data' => $result];
+        } else {
+            return ['code' => 1, 'message' => 'Delete failed'];
+        }
+    }
+
     // Get my sports
     public function getMySports($page, $sport, $start_date, $sort, $order)
     {
@@ -89,12 +117,11 @@ class dbHelper
         if ($sort) {
             $sql = "select * from `sports` where `sport` like '%" . $sport . "%' and `start_date` like '%" . $start_date . "%' and `user_id`= ? order by " . $sort . " " . $order . " limit $skip, 10";
         }
-        var_dump($sql);
         
         $sth = $this->dbh->prepare($sql);
 
         $sth->execute([$_SESSION['id']]);
-        print_r($sth->errorInfo());
+        // print_r($sth->errorInfo());
 
         $result = $sth->fetchAll();
 
