@@ -194,7 +194,27 @@ class dbHelper
             $sport = $result['sport'];
         }
 
-
         return ['code' => 0, 'data' => ['calories' => $calories, 'distance' => $distance, 'avg_speed' => $avg_speed, 'total' => $total, 'public' => $public, 'sport' => $sport]];
     }
+
+    // Get all users
+    public function getAllUsers($page, $name, $username)
+    {
+        $skip = ($page - 1) * 10;
+        $sql = "select * from `users` where `name` like '%" . $name . "%' and `username` like '%" . $username . "%' limit $skip, 10";
+
+        $sth = $this->dbh->prepare($sql);
+
+        $sth->execute();
+        print_r($sth->errorInfo());
+
+        $result = $sth->fetchAll();
+
+        if ($result) {
+            return ['code' => 0, 'data' => $result];
+        } else {
+            return ['code' => 0, 'data' => []];
+        }
+    }
+
 }

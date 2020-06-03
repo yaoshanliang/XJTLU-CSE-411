@@ -86,7 +86,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                                 <td>
                                     <a onclick="edit(<?php echo $v['id'] . ',\'' . $v['sport'] . '\', \'' .  $v['duration'] . '\',\'' . $v['distance'] . '\',\'' . $v['start_date'] . '\',\'' . $v['start_time'] . '\',\'' . $v['avg_speed'] . '\',\'' . $v['calories'] . '\',' . $v['is_public'] ?>)">Edit</a>
                                     <a onclick="deletes(<?php echo $v['id']; ?>)">Delete</a>
-
                                 </td>
                             </tr>
                         <?php } ?>
