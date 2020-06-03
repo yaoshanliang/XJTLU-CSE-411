@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                     <?php } else { ?>
                         <button type="button" class="btn btn-default" onclick="sort('calories', 'asc');">Sort By Calories(ASC)</button>
                     <?php } ?>
-                    <input type="hidden" id="page" value="<?php echo @$_GET['page']; ?>">
+                    <input type="hidden" id="page" value="<?php echo $page; ?>">
 
                     <table class="common-lists-style course-lists">
                         <tr>

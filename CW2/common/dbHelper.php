@@ -131,4 +131,28 @@ class dbHelper
             return ['code' => 0, 'data' => []];
         }
     }
+
+    // Get all sports
+    public function getAllSports($page, $sport, $start_date, $sort, $order)
+    {
+        $skip = ($page - 1) * 10;
+        // $sql = "select * from `sports` where `user_id`= ? limit $skip, 10";
+        $sql = "select * from `sports` join `users` on sports.user_id = users.id where `is_public` = 1 and `sport` like '%" . $sport . "%' and `start_date` like '%" . $start_date . "%'   limit $skip, 10";
+        if ($sort) {
+            $sql = "select * from `sports` join `users` on sports.user_id = users.id where `is_public` = 1 and `sport` like '%" . $sport . "%' and `start_date` like '%" . $start_date . "%' order by " . $sort . " " . $order . " limit $skip, 10";
+        }
+        
+        $sth = $this->dbh->prepare($sql);
+
+        $sth->execute();
+        print_r($sth->errorInfo());
+
+        $result = $sth->fetchAll();
+
+        if ($result) {
+            return ['code' => 0, 'data' => $result];
+        } else {
+            return ['code' => 0, 'data' => []];
+        }
+    }
 }
