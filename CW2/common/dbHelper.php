@@ -26,7 +26,7 @@ class dbHelper
     {
         $password = md5($password);
         // User input is automatically enclosed in quotation marks, so there is no danger of SQL injection attacks.
-        $sql = "select `id`, `username`, `name`,`email`, `gender`, `birthday` from `users` where `username`= ? and `password` = ?";
+        $sql = "select `id`, `username`, `name`,`email`, `gender`, `birthday`, `profile` from `users` where `username`= ? and `password` = ?";
         $sth = $this->dbh->prepare($sql);
 
         $sth->execute([$username, $password]);

@@ -16,6 +16,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["name"] = $result['data']['name'];
         $_SESSION["gender"] = $result['data']['gender'];
         $_SESSION["birthday"] = $result['data']['birthday'];
+        $_SESSION["email"] = $result['data']['email'];
+        $_SESSION["profile"] = $result['data']['profile'];
         header("Location: ./1930954.php");
     } else {
         $loginInfo = $result['message'];

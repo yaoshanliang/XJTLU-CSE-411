@@ -11,7 +11,7 @@
             <li><a href="./1930954.php">Public</a></li>
             <li><a href="./sports.php">Sports</a></li>
             <li><a href="./statistics.php">Statistics</a></li>
-            <li><a href="./user.php">Message</a></li>
+            <li><a href="./user.php">Messages</a></li>
         </ul>
 
 
