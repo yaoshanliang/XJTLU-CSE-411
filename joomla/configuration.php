@@ -57,8 +57,8 @@ class JConfig {
 	public $unicodeslugs = '0';
 	public $feed_limit = '10';
 	public $feed_email = 'none';
-	public $log_path = '/Users/iat/workspace/code/php/XJTLU-CSE-411/joomla/administrator/logs';
-	public $tmp_path = '/Users/iat/workspace/code/php/XJTLU-CSE-411/joomla/tmp';
+	public $log_path = '/Users/iat/workspace/code/php/411 Social Web Programming/XJTLU-CSE-411/joomla/administrator/logs';
+	public $tmp_path = '/Users/iat/workspace/code/php/411 Social Web Programming/XJTLU-CSE-411/joomla/tmp';
 	public $lifetime = '15';
 	public $session_handler = 'database';
 	public $shared_session = '0';
