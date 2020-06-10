@@ -13,9 +13,9 @@ class JConfig {
 	public $debug_lang = '0';
 	public $debug_lang_const = '1';
 	public $dbtype = 'pdomysql';
-	public $host = 'localhost';
-	public $user = 'root';
-	public $password = 'root';
+	public $host = 'iat.net.cn';
+	public $user = 'joomla';
+	public $password = 'joomla';
 	public $db = 'joomla';
 	public $dbprefix = 'i9n36_';
 	public $live_site = '';
