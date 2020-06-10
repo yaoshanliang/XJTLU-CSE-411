@@ -245,7 +245,7 @@ a:focus {
 .navbar-static-top .container,
 .navbar-fixed-top .container,
 .navbar-fixed-bottom .container {
-	width: 940px;
+	width: 1240px;
 }
 .span12 {
 	width: 940px;
@@ -7132,6 +7132,10 @@ body.site {
 	border-top: 3px solid #0088cc;
 	padding: 20px;
 	background-color: #f4f6f7;
+}
+body.headline {
+	height: 1.5px;
+    background-image: linear-gradient(90deg, #f79533 0%, #f37055 15%, #ef4e7b 30%, #a166ab 44%, #5073b8 58%, #1098ad 72%, #07b39b 86%, #6dba82 100%);
 }
 body.site.fluid {
 	background-color: #ffffff;
