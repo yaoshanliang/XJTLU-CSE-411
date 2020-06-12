@@ -165,7 +165,7 @@ abstract class KunenaForum
 	 */
 	public static function isDev()
 	{
-		if ('5.1.16' == '@' . 'kunenaversion' . '@')
+		if ('5.1.17' == '@' . 'kunenaversion' . '@')
 		{
 			return true;
 		}
@@ -296,7 +296,7 @@ abstract class KunenaForum
 	 */
 	protected static function buildVersion()
 	{
-		if ('5.1.16' == '@' . 'kunenaversion' . '@')
+		if ('5.1.17' == '@' . 'kunenaversion' . '@')
 		{
 			$file = JPATH_MANIFESTS . '/packages/pkg_kunena.xml';
 
@@ -307,17 +307,17 @@ abstract class KunenaForum
 			}
 			else
 			{
-				self::$version = strtoupper('5.1.16');
+				self::$version = strtoupper('5.1.17');
 			}
 		}
 		else
 		{
-			self::$version = strtoupper('5.1.16');
+			self::$version = strtoupper('5.1.17');
 		}
 
 		self::$version_major = substr(self::$version, 0, 3);
-		self::$version_date  = ('2020-03-17' == '@' . 'kunenaversiondate' . '@') ? Factory::getDate()->format('Y-m-d') : '2020-03-17';
-		self::$version_name  = ('Pallene' == '@' . 'kunenaversionname' . '@') ? 'Git Repository' : 'Pallene';
+		self::$version_date  = ('2020-06-09' == '@' . 'kunenaversiondate' . '@') ? Factory::getDate()->format('Y-m-d') : '2020-06-09';
+		self::$version_name  = ('Quaoar' == '@' . 'kunenaversionname' . '@') ? 'Git Repository' : 'Quaoar';
 	}
 
 	/**

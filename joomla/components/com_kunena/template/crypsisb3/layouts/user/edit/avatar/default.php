@@ -19,11 +19,13 @@ Text::script('COM_KUNENA_UPLOADED_LABEL_ERROR_REACHED_MAX_NUMBER_AVATAR');
 
 HTMLHelper::_('jquery.ui');
 $this->addScript('assets/js/load-image.min.js');
+$this->addScript('assets/js/load-image-meta.js');
 $this->addScript('assets/js/canvas-to-blob.min.js');
 $this->addScript('assets/js/jquery.iframe-transport.js');
 $this->addScript('assets/js/jquery.fileupload.js');
 $this->addScript('assets/js/jquery.fileupload-process.js');
 $this->addScript('assets/js/jquery.fileupload-image.js');
+$this->addScript('assets/js/jquery.fileupload-validate.js');
 $this->addScript('assets/js/upload.avatar.js');
 $this->addStyleSheet('assets/css/fileupload.css');
 

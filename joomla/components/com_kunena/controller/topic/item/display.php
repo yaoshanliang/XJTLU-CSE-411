@@ -210,22 +210,22 @@ class ComponentKunenaControllerTopicItemDisplay extends KunenaControllerDisplay
 		$this->userTopic  = $this->topic->getUserTopic();
 		$this->quickReply = $this->topic->isAuthorised('reply') && $this->me->exists() && KunenaConfig::getInstance()->quickreply;
 
-		$this->headerText = KunenaHtmlParser::parseText($this->topic->displayField('subject'));
+		$subject = KunenaHtmlParser::parseText($this->topic->displayField('subject'));
 
 		$data                           = new CMSObject;
-		$data->{'@context'}             = "http://schema.org";
+		$data->{'@context'}             = "https://schema.org";
 		$data->{'@type'}                = "DiscussionForumPosting";
 		$data->{'id'}                   = Joomla\CMS\Uri\Uri::getInstance()->toString(array('scheme', 'host', 'port')) . $this->topic->getPermaUrl();
 		$data->{'discussionUrl'}        = $this->topic->getPermaUrl();
-		$data->{'headline'}             = $this->headerText;
+		$data->{'headline'}             = $subject;
 		$data->{'image'}                = $this->docImage();
 		$data->{'datePublished'}        = $this->topic->getFirstPostTime()->toISO8601();
 		$data->{'dateModified'}         = Factory::getDate($this->message->modified_time)->toISO8601();
-		$data->author                   = array();
+		$data->{'author'}               = array();
 		$tmp                            = new CMSObject;
 		$tmp->{'@type'}                 = "Person";
 		$tmp->{'name'}                  = $this->topic->getLastPostAuthor()->username;
-		$data->author                   = $tmp;
+		$data->{'author'}               = $tmp;
 		$data->interactionStatistic     = array();
 		$tmp2                           = new CMSObject;
 		$tmp2->{'@type'}                = "InteractionCounter";
@@ -264,7 +264,7 @@ class ComponentKunenaControllerTopicItemDisplay extends KunenaControllerDisplay
 	/**
 	 * Prepare messages for display.
 	 *
-	 * @param   int $mesid Selected message Id.
+	 * @param   int  $mesid  Selected message Id.
 	 *
 	 * @return  void
 	 * @throws Exception
@@ -337,8 +337,8 @@ class ComponentKunenaControllerTopicItemDisplay extends KunenaControllerDisplay
 	/**
 	 * Change ordering of the displayed messages and apply threading.
 	 *
-	 * @param   int   $parent Parent Id.
-	 * @param   array $indent Indent for the current object.
+	 * @param   int    $parent  Parent Id.
+	 * @param   array  $indent  Indent for the current object.
 	 *
 	 * @return  array
 	 * @throws Exception
@@ -458,8 +458,8 @@ class ComponentKunenaControllerTopicItemDisplay extends KunenaControllerDisplay
 	 *
 	 * @return void
 	 * @throws Exception
-	 * @since Kunena
 	 * @throws null
+	 * @since Kunena
 	 */
 	protected function prepareDocument()
 	{
@@ -473,7 +473,7 @@ class ComponentKunenaControllerTopicItemDisplay extends KunenaControllerDisplay
 		$image = $this->docImage();
 
 		$message = KunenaHtmlParser::parseText($this->topic->first_post_message);
-		$matches = preg_match("/\[img]http(s?):\/\/.*\/\img]/iu", $message, $title);
+		$matches = preg_match("/\[img]http(s?):\/\/.*\/img]/iu", $message, $title);
 
 		if ($matches)
 		{
@@ -598,7 +598,9 @@ class ComponentKunenaControllerTopicItemDisplay extends KunenaControllerDisplay
 		{
 			$params          = $menu_item->params;
 			$params_keywords = $params->get('menu-meta_keywords');
-			$this->setTitle($headerText);
+			$subject         = $this->topic->subject . $headerText;
+
+			$this->setTitle($subject);
 
 			if (!empty($params_keywords))
 			{
@@ -640,8 +642,8 @@ class ComponentKunenaControllerTopicItemDisplay extends KunenaControllerDisplay
 	 * Prepare document.
 	 *
 	 * @throws Exception
-	 * @since Kunena
 	 * @throws null
+	 * @since Kunena
 	 */
 	protected function docImage()
 	{

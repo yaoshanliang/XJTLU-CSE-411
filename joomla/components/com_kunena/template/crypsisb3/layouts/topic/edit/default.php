@@ -54,12 +54,12 @@ Text::script('COM_KUNENA_EDITOR_EBAY');
 Text::script('COM_KUNENA_EDITOR_MAP');
 Text::script('COM_KUNENA_EDITOR_POLL_SETTINGS');
 Text::script('COM_KUNENA_EDITOR_VIDEO');
+Text::script('COM_KUNENA_EDITOR_VIDEO_PROVIDER');
 Text::script('COM_KUNENA_EDITOR_IMAGELINK');
 Text::script('COM_KUNENA_EDITOR_EMOTICONS');
 Text::script('COM_KUNENA_EDITOR_TWEET');
 Text::script('COM_KUNENA_EDITOR_INSTAGRAM');
 Text::script('COM_KUNENA_EDITOR_SOUNDCLOUD');
-Text::script('COM_KUNENA_EDITOR_REMOVE_INLINE');
 Text::script('COM_KUNENA_EDITOR_COLOR_BLACK');
 Text::script('COM_KUNENA_EDITOR_COLOR_ORANGE');
 Text::script('COM_KUNENA_EDITOR_COLOR_RED');
@@ -81,7 +81,7 @@ $this->addScriptOptions('com_kunena.imageheight', $this->config->imageheight);
 $this->addScriptOptions('com_kunena.imagewidth', $this->config->imagewidth);
 
 HTMLHelper::_('jquery.ui');
-$this->addScript('assets/js/load-image.min.js');
+$this->addScript('assets/js/load-image.all.min.js');
 $this->addScript('assets/js/canvas-to-blob.min.js');
 $this->addScript('assets/js/jquery.fileupload.js');
 $this->addScript('assets/js/jquery.fileupload-process.js');
@@ -89,13 +89,15 @@ $this->addScript('assets/js/jquery.iframe-transport.js');
 $this->addScript('assets/js/jquery.fileupload-image.js');
 $this->addScript('assets/js/jquery.fileupload-audio.js');
 $this->addScript('assets/js/jquery.fileupload-video.js');
+$this->addScript('assets/js/jquery.fileupload-validate.js');
 $this->addScript('assets/js/upload.main.js');
 $this->addStyleSheet('assets/css/fileupload.css');
 
 $this->k = 0;
 
+$this->addScriptOptions('com_kunena.kunena_upload_files_set_inline', KunenaRoute::_('index.php?option=com_kunena&view=topic&task=setinline&format=json&' . Session::getFormToken() . '=1', false));
 $this->addScriptOptions('com_kunena.kunena_upload_files_rem', KunenaRoute::_('index.php?option=com_kunena&view=topic&task=removeattachments&format=json&' . Session::getFormToken() . '=1', false));
-$this->addScriptOptions('com_kunena.kunena_upload_files_rem_inline', KunenaRoute::_('index.php?option=com_kunena&view=topic&task=removeinline&format=json&' . Session::getFormToken() . '=1', false));
+$this->addScriptOptions('com_kunena.kunena_upload_files_rem_inline_attachment', KunenaRoute::_('index.php?option=com_kunena&view=topic&task=removeinlineonattachment&format=json&' . Session::getFormToken() . '=1', false));
 $this->addScriptOptions('com_kunena.kunena_upload_files_preload', KunenaRoute::_('index.php?option=com_kunena&view=topic&task=loadattachments&format=json&' . Session::getFormToken() . '=1', false));
 $this->addScriptOptions('com_kunena.kunena_upload_files_maxfiles', $this->config->attachment_limit);
 $this->addScriptOptions('com_kunena.icons.upload', KunenaIcons::upload());
@@ -437,7 +439,7 @@ if (KunenaFactory::getTemplate()->params->get('formRecover'))
 								<div class="controls">
 									<input style="float: left; margin-right: 10px;" type="checkbox" name="subscribeMe"
 									       id="subscribeMe"
-									       value="1" <?php if ($this->config->subscriptionschecked == 1 && $me->canSubscribe != 0 || $this->config->subscriptionschecked == 0 && $me->canSubscribe == 1)
+									       value="1" <?php if ($this->config->subscriptionschecked == 1 && $me->canSubscribe != 0 || $this->config->subscriptionschecked == 0 && $me->canSubscribe == 1 || $this->category->getSubscribed($me->userid))
 									{
 										echo 'checked="checked"';
 									} ?> />

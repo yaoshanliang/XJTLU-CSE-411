@@ -136,15 +136,15 @@ class KunenaTemplateCrypsisb3 extends KunenaTemplate
 
 		if ($fontawesome)
 		{
-			$this->addScript('https://use.fontawesome.com/releases/v5.8.1/js/all.js', array(), array('defer' => true));
-			$this->addScript('https://use.fontawesome.com/releases/v5.8.1/js/v4-shims.js', array(), array('defer' => true));
+			$this->addScript('https://use.fontawesome.com/releases/v5.13.0/js/all.js', array(), array('defer' => true));
+			$this->addScript('https://use.fontawesome.com/releases/v5.13.0/js/v4-shims.js', array(), array('defer' => true));
 		}
 
 		$icons = $this->ktemplate->params->get('icons');
 
 		if ($icons)
 		{
-			$this->addStyleSheet("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
+			$this->addStyleSheet("https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
 		}
 
 		// Load template colors settings
