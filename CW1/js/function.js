@@ -1,6 +1,6 @@
 // calculate the left time
 function countdown() {
-  let time = "2020-05-01 18:00:00";
+  let time = "2021-05-01 18:00:00";
   let timestamp = new Date(time);
   timestamp = timestamp.getTime() / 1000;
 
